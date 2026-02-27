@@ -28,4 +28,4 @@ boxes, logits, phrases = predict(
 )
 
 annotated_frame = annotate(image_source=image_source, boxes=boxes, logits=logits, phrases=phrases)
-cv2.imwrite("annotated_image.jpg", annotated_frame)
+cv2.imwrite("annotated_image_horse.jpg", annotated_frame)

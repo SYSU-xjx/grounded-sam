@@ -57,6 +57,32 @@ class PromptTranslator:
         return translated
 
 
+def normalize_translated_prompt(original_prompt, translated_prompt):
+    prompt = translated_prompt.strip()
+    prompt = re.sub(r"\s+", " ", prompt)
+    prompt = prompt.rstrip(" .!?")
+    prompt = prompt.lower()
+    # GroundingDINO works better with noun phrases than full sentences.
+    prompt = re.sub(r"^(a|an|the)\s+", "", prompt)
+
+    # If Chinese prompt indicates "all", bias toward plural phrase.
+    has_all_hint = any(tok in original_prompt for tok in ["所有", "全部", "全部的"])
+    if has_all_hint and not prompt.endswith("s"):
+        prompt = f"{prompt}s"
+    return prompt
+
+
+def relabel_phrases_with_original_prompt(pred_phrases, original_prompt):
+    relabeled = []
+    for phrase in pred_phrases:
+        if "(" in phrase and phrase.endswith(")"):
+            score = phrase[phrase.rfind("("):]
+            relabeled.append(f"{original_prompt}{score}")
+        else:
+            relabeled.append(original_prompt)
+    return relabeled
+
+
 def load_image(image_path):
     # load image
     image_pil = Image.open(image_path).convert("RGB")  # load image
@@ -212,6 +238,11 @@ if __name__ == "__main__":
         default="opus-mt-zh-en",
         help="ModelScope translation model name for zh->en"
     )
+    parser.add_argument(
+        "--display_chinese_label",
+        action="store_true",
+        help="show original Chinese prompt as box label when translation is enabled"
+    )
     args = parser.parse_args()
 
     # cfg
@@ -230,6 +261,7 @@ if __name__ == "__main__":
     bert_base_uncased_path = args.bert_base_uncased_path
     enable_translate = args.enable_translate
     translation_model = args.translation_model
+    display_chinese_label = args.display_chinese_label
 
     prompt_for_inference = text_prompt
     prompt_info = {
@@ -241,9 +273,12 @@ if __name__ == "__main__":
     if enable_translate:
         translator = PromptTranslator(model_name=translation_model, device=device)
         if translator.contains_chinese(text_prompt):
-            prompt_for_inference = translator.translate_zh_to_en(text_prompt)
+            translated_prompt = translator.translate_zh_to_en(text_prompt)
+            prompt_for_inference = normalize_translated_prompt(text_prompt, translated_prompt)
+            prompt_info["translated_prompt_raw"] = translated_prompt
             prompt_info["translated_prompt"] = prompt_for_inference
-            print(f"[PromptTranslator] zh->en: '{text_prompt}' -> '{prompt_for_inference}'")
+            print(f"[PromptTranslator] zh->en: '{text_prompt}' -> '{translated_prompt}'")
+            print(f"[PromptTranslator] normalized prompt: '{prompt_for_inference}'")
         else:
             print("[PromptTranslator] no Chinese characters detected; skip translation.")
 
@@ -261,6 +296,8 @@ if __name__ == "__main__":
     boxes_filt, pred_phrases = get_grounding_output(
         model, image, prompt_for_inference, box_threshold, text_threshold, device=device
     )
+    if enable_translate and display_chinese_label and translator.contains_chinese(text_prompt):
+        pred_phrases = relabel_phrases_with_original_prompt(pred_phrases, text_prompt)
 
     # initialize SAM
     if use_sam_hq:

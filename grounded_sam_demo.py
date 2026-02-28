@@ -136,12 +136,17 @@ def show_box(box, ax, label):
     ax.text(x0, y0, label)
 
 
-def save_mask_data(output_dir, mask_list, box_list, label_list, prompt_info=None):
+def save_mask_data(output_dir, mask_list, box_list, label_list, prompt_info=None, image_size=None):
     value = 0  # 0 for background
 
-    mask_img = torch.zeros(mask_list.shape[-2:])
-    for idx, mask in enumerate(mask_list):
-        mask_img[mask.cpu().numpy()[0] == True] = value + idx + 1
+    if mask_list is None or (torch.is_tensor(mask_list) and mask_list.numel() == 0):
+        if image_size is None:
+            raise ValueError("image_size must be provided when mask_list is empty")
+        mask_img = torch.zeros(image_size)
+    else:
+        mask_img = torch.zeros(mask_list.shape[-2:])
+        for idx, mask in enumerate(mask_list):
+            mask_img[mask.cpu().numpy()[0] == True] = value + idx + 1
     plt.figure(figsize=(10, 10))
     plt.imshow(mask_img.numpy())
     plt.axis('off')
@@ -274,6 +279,25 @@ if __name__ == "__main__":
         boxes_filt[i][2:] += boxes_filt[i][:2]
 
     boxes_filt = boxes_filt.cpu()
+    if boxes_filt.numel() == 0:
+        print("[WARN] No boxes detected by GroundingDINO. Skip SAM decoding.")
+        plt.figure(figsize=(10, 10))
+        plt.imshow(image)
+        plt.axis('off')
+        plt.savefig(
+            os.path.join(output_dir, "grounded_sam_output.jpg"),
+            bbox_inches="tight", dpi=300, pad_inches=0.0
+        )
+        save_mask_data(
+            output_dir,
+            mask_list=None,
+            box_list=[],
+            label_list=[],
+            prompt_info=prompt_info,
+            image_size=(H, W),
+        )
+        sys.exit(0)
+
     transformed_boxes = predictor.transform.apply_boxes_torch(boxes_filt, image.shape[:2]).to(device)
 
     masks, _, _ = predictor.predict_torch(

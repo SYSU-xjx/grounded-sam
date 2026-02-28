@@ -133,3 +133,9 @@ dmypy.json
 outputs/
 
 .idea/
+
+# coco annotations
+data/coco/annotations/
+
+# bert-base-chinese
+bert-base-chinese/

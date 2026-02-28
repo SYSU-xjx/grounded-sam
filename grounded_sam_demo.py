@@ -1,11 +1,13 @@
 import argparse
 import os
 import sys
+import re
 
 import numpy as np
 import json
 import torch
 from PIL import Image
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
 sys.path.append(os.path.join(os.getcwd(), "GroundingDINO"))
 sys.path.append(os.path.join(os.getcwd(), "segment_anything"))
@@ -27,6 +29,32 @@ from segment_anything import (
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+
+
+class PromptTranslator:
+    def __init__(self, model_name, device):
+        self.model_name = model_name
+        self.device = device
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        self.model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+        self.model.to(device)
+        self.model.eval()
+
+    @staticmethod
+    def contains_chinese(text):
+        return bool(re.search(r"[\u4e00-\u9fff]", text))
+
+    def translate_zh_to_en(self, text, max_new_tokens=128):
+        inputs = self.tokenizer(text, return_tensors="pt", truncation=True).to(self.device)
+        with torch.no_grad():
+            generated = self.model.generate(
+                **inputs,
+                max_new_tokens=max_new_tokens,
+                num_beams=4,
+                do_sample=False
+            )
+        translated = self.tokenizer.decode(generated[0], skip_special_tokens=True).strip()
+        return translated
 
 
 def load_image(image_path):
@@ -108,7 +136,7 @@ def show_box(box, ax, label):
     ax.text(x0, y0, label)
 
 
-def save_mask_data(output_dir, mask_list, box_list, label_list):
+def save_mask_data(output_dir, mask_list, box_list, label_list, prompt_info=None):
     value = 0  # 0 for background
 
     mask_img = torch.zeros(mask_list.shape[-2:])
@@ -133,6 +161,11 @@ def save_mask_data(output_dir, mask_list, box_list, label_list):
             'logit': float(logit),
             'box': box.numpy().tolist(),
         })
+    if prompt_info is not None:
+        json_data.insert(0, {
+            'prompt': prompt_info
+        })
+
     with open(os.path.join(output_dir, 'mask.json'), 'w') as f:
         json.dump(json_data, f)
 
@@ -167,6 +200,13 @@ if __name__ == "__main__":
 
     parser.add_argument("--device", type=str, default="cpu", help="running on cpu only!, default=False")
     parser.add_argument("--bert_base_uncased_path", type=str, required=False, help="bert_base_uncased model path, default=False")
+    parser.add_argument("--enable_translate", action="store_true", help="translate Chinese prompt into English before grounding")
+    parser.add_argument(
+        "--translation_model",
+        type=str,
+        default="Helsinki-NLP/opus-mt-zh-en",
+        help="HuggingFace translation model name for zh->en"
+    )
     args = parser.parse_args()
 
     # cfg
@@ -183,6 +223,24 @@ if __name__ == "__main__":
     text_threshold = args.text_threshold
     device = args.device
     bert_base_uncased_path = args.bert_base_uncased_path
+    enable_translate = args.enable_translate
+    translation_model = args.translation_model
+
+    prompt_for_inference = text_prompt
+    prompt_info = {
+        "original_prompt": text_prompt,
+        "translated_prompt": text_prompt,
+        "translation_enabled": enable_translate
+    }
+
+    if enable_translate:
+        translator = PromptTranslator(model_name=translation_model, device=device)
+        if translator.contains_chinese(text_prompt):
+            prompt_for_inference = translator.translate_zh_to_en(text_prompt)
+            prompt_info["translated_prompt"] = prompt_for_inference
+            print(f"[PromptTranslator] zh->en: '{text_prompt}' -> '{prompt_for_inference}'")
+        else:
+            print("[PromptTranslator] no Chinese characters detected; skip translation.")
 
     # make dir
     os.makedirs(output_dir, exist_ok=True)
@@ -196,7 +254,7 @@ if __name__ == "__main__":
 
     # run grounding dino model
     boxes_filt, pred_phrases = get_grounding_output(
-        model, image, text_prompt, box_threshold, text_threshold, device=device
+        model, image, prompt_for_inference, box_threshold, text_threshold, device=device
     )
 
     # initialize SAM
@@ -239,4 +297,4 @@ if __name__ == "__main__":
         bbox_inches="tight", dpi=300, pad_inches=0.0
     )
 
-    save_mask_data(output_dir, masks, boxes_filt, pred_phrases)
+    save_mask_data(output_dir, masks, boxes_filt, pred_phrases, prompt_info=prompt_info)

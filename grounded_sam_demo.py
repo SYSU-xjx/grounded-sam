@@ -35,8 +35,8 @@ class PromptTranslator:
     def __init__(self, model_name, device):
         self.model_name = model_name
         self.device = device
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        self.model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name, local_files_only=True)
+        self.model = AutoModelForSeq2SeqLM.from_pretrained(model_name, local_files_only=True)
         self.model.to(device)
         self.model.eval()
 
@@ -209,8 +209,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--translation_model",
         type=str,
-        default="Helsinki-NLP/opus-mt-zh-en",
-        help="HuggingFace translation model name for zh->en"
+        default="opus-mt-zh-en",
+        help="ModelScope translation model name for zh->en"
     )
     args = parser.parse_args()
 

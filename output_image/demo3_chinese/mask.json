@@ -1,0 +1,1 @@
+[{"prompt": {"original_prompt": "\u7ea2\u8272\u7684\u6905\u5b50", "translated_prompt": "A red chair.", "translation_enabled": true}}, {"value": 0, "label": "background"}, {"value": 1, "label": "a red chair", "logit": 0.78, "box": [2062.115234375, 391.1614990234375, 3186.77294921875, 1763.7337646484375]}]

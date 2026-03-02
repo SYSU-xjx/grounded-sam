@@ -9,6 +9,11 @@ import torch
 from PIL import Image
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
+import matplotlib.pyplot as plt
+
+plt.rcParams['font.sans-serif'] = ['Noto Sans CJK SC']
+plt.rcParams['axes.unicode_minus'] = False
+
 sys.path.append(os.path.join(os.getcwd(), "GroundingDINO"))
 sys.path.append(os.path.join(os.getcwd(), "segment_anything"))
 
@@ -56,7 +61,7 @@ class PromptTranslator:
         translated = self.tokenizer.decode(generated[0], skip_special_tokens=True).strip()
         return translated
 
-
+# 用于修正翻译后的提示词，去掉冠词等
 def normalize_translated_prompt(original_prompt, translated_prompt):
     prompt = translated_prompt.strip()
     prompt = re.sub(r"\s+", " ", prompt)
@@ -71,7 +76,7 @@ def normalize_translated_prompt(original_prompt, translated_prompt):
         prompt = f"{prompt}s"
     return prompt
 
-
+# 保证标注框上的标签显示原始的提示词
 def relabel_phrases_with_original_prompt(pred_phrases, original_prompt):
     relabeled = []
     for phrase in pred_phrases:

@@ -9,10 +9,24 @@ import torch
 from PIL import Image
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
-import matplotlib.pyplot as plt
+import matplotlib
+from matplotlib import font_manager
 
-plt.rcParams['font.sans-serif'] = ['Noto Sans CJK SC']
-plt.rcParams['axes.unicode_minus'] = False
+# 优先用 Noto CJK，找不到就回退
+candidate_fonts = [
+    "Noto Sans CJK SC",
+    "Noto Sans CJK JP",
+    "SimHei",
+    "WenQuanYi Zen Hei",
+    "Arial Unicode MS",
+]
+available = {f.name for f in font_manager.fontManager.ttflist}
+for name in candidate_fonts:
+    if name in available:
+        matplotlib.rcParams["font.sans-serif"] = [name]
+        break
+
+matplotlib.rcParams["axes.unicode_minus"] = False
 
 sys.path.append(os.path.join(os.getcwd(), "GroundingDINO"))
 sys.path.append(os.path.join(os.getcwd(), "segment_anything"))

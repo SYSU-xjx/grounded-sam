@@ -55,6 +55,18 @@ def parse_args():
         default=15.0,
         help="HTTP timeout in seconds.",
     )
+    parser.add_argument(
+        "--min_total_instances",
+        type=int,
+        default=0,
+        help="Minimum number of total non-crowd instances in an image.",
+    )
+    parser.add_argument(
+        "--min_category_instances",
+        type=int,
+        default=0,
+        help="Minimum number of non-crowd instances of the selected category in an image.",
+    )
     return parser.parse_args()
 
 
@@ -91,6 +103,20 @@ def main():
     selected = defaultdict(list)
     used_img_ids = set()
     download_log = []
+    image_instance_stats = {}
+
+    def get_instance_stats(img_id, cat_id):
+        cache_key = (img_id, cat_id)
+        if cache_key in image_instance_stats:
+            return image_instance_stats[cache_key]
+        ann_ids_all = coco.getAnnIds(imgIds=[img_id], iscrowd=False)
+        ann_ids_cat = coco.getAnnIds(imgIds=[img_id], catIds=[cat_id], iscrowd=False)
+        stats = {
+            "total_non_crowd_instances": len(ann_ids_all),
+            "category_non_crowd_instances": len(ann_ids_cat),
+        }
+        image_instance_stats[cache_key] = stats
+        return stats
 
     for cat_name in category_names:
         cat_id = next(k for k, v in id_to_name.items() if v == cat_name)
@@ -101,6 +127,11 @@ def main():
             if len(selected[cat_name]) >= args.per_category:
                 break
             if args.unique_images and img_id in used_img_ids:
+                continue
+            stats = get_instance_stats(img_id, cat_id)
+            if stats["total_non_crowd_instances"] < args.min_total_instances:
+                continue
+            if stats["category_non_crowd_instances"] < args.min_category_instances:
                 continue
             selected[cat_name].append(img_id)
             used_img_ids.add(img_id)
@@ -144,8 +175,13 @@ def main():
         "categories": category_names,
         "per_category": args.per_category,
         "unique_images": args.unique_images,
+        "min_total_instances": args.min_total_instances,
+        "min_category_instances": args.min_category_instances,
         "selected_img_ids": {k: v for k, v in selected.items()},
         "download_log": download_log,
+        "image_instance_stats": {
+            f"{img_id}:{cat_id}": stats for (img_id, cat_id), stats in image_instance_stats.items()
+        },
     }
     manifest_path = os.path.join(args.output_dir, "manifest.json")
     with open(manifest_path, "w", encoding="utf-8") as f:

@@ -136,7 +136,7 @@ outputs/
 
 # coco annotations
 data/coco/annotations/
-data/coco_subset_5x50/
+data/coco_subset_10x20_min2/images/
 
 # bert-base-chinese
 bert-base-chinese/

@@ -1,0 +1,14 @@
+requested_per_category=20
+person=20
+car=20
+dog=20
+cup=20
+bottle=20
+chair=20
+backpack=20
+bicycle=20
+laptop=19
+microwave=1
+unique_images_selected=180
+download_ok=176
+download_fail=4

@@ -1,0 +1,3765 @@
+{
+  "ann_file": "data/coco/annotations/instances_val2017.json",
+  "categories": [
+    "person",
+    "car",
+    "dog",
+    "cup",
+    "bottle",
+    "chair",
+    "backpack",
+    "bicycle",
+    "laptop",
+    "microwave"
+  ],
+  "per_category": 20,
+  "unique_images": true,
+  "min_total_instances": 0,
+  "min_category_instances": 2,
+  "selected_img_ids": {
+    "person": [
+      25394,
+      183716,
+      504589,
+      424642,
+      141671,
+      492282,
+      100428,
+      311392,
+      568981,
+      562818,
+      380913,
+      515579,
+      281687,
+      343561,
+      532530,
+      475064,
+      39405,
+      463618,
+      448076,
+      267169
+    ],
+    "car": [
+      396338,
+      269632,
+      79034,
+      296649,
+      436738,
+      410880,
+      157365,
+      365642,
+      33109,
+      273198,
+      426372,
+      17029,
+      163057,
+      499768,
+      293071,
+      555597,
+      493286,
+      477227,
+      144333,
+      11197
+    ],
+    "dog": [
+      90003,
+      89880,
+      427034,
+      143961,
+      71226,
+      366884,
+      547502,
+      81766,
+      512836,
+      318238,
+      289702,
+      57760,
+      149568,
+      236784,
+      355240,
+      182805,
+      269113,
+      129756,
+      107226,
+      432553
+    ],
+    "cup": [
+      286553,
+      279730,
+      483999,
+      346703,
+      499313,
+      356432,
+      150417,
+      268378,
+      227044,
+      415194,
+      226171,
+      329219,
+      109313,
+      463283,
+      242060,
+      12576,
+      256407,
+      508370,
+      347335,
+      397354
+    ],
+    "bottle": [
+      405691,
+      476787,
+      166426,
+      170670,
+      20553,
+      180751,
+      73326,
+      177489,
+      84241,
+      214224,
+      278463,
+      223182,
+      266206,
+      112298,
+      125778,
+      210855,
+      32901,
+      376322,
+      450303,
+      536947
+    ],
+    "chair": [
+      189213,
+      91500,
+      471023,
+      13923,
+      356248,
+      97337,
+      29984,
+      541123,
+      213445,
+      357978,
+      259597,
+      319369,
+      298396,
+      256916,
+      570456,
+      273711,
+      201426,
+      16958,
+      520659,
+      138550
+    ],
+    "backpack": [
+      226417,
+      3255,
+      100723,
+      156372,
+      346232,
+      84650,
+      503855,
+      253835,
+      78748,
+      57150,
+      516677,
+      94944,
+      14439,
+      150224,
+      567740,
+      250619,
+      301135,
+      82812,
+      102805,
+      176037
+    ],
+    "bicycle": [
+      259640,
+      167486,
+      38829,
+      571857,
+      97988,
+      245173,
+      82821,
+      59635,
+      256941,
+      132375,
+      70774,
+      356387,
+      357737,
+      210273,
+      40083,
+      74058,
+      488592,
+      463522,
+      259830,
+      411938
+    ],
+    "laptop": [
+      537991,
+      507575,
+      516916,
+      465822,
+      529148,
+      198641,
+      570782,
+      433103,
+      325838,
+      306139,
+      13659,
+      363840,
+      32610,
+      325483,
+      324258,
+      97994,
+      9400,
+      486040,
+      59598
+    ],
+    "microwave": [
+      453302
+    ]
+  },
+  "download_log": [
+    {
+      "img_id": 3255,
+      "file_name": "000000003255.jpg",
+      "ok": false,
+      "reason": "HTTPConnectionPool(host='images.cocodataset.org', port=80): Max retries exceeded with url: /val2017/000000003255.jpg (Caused by NameResolutionError(\"<urllib3.connection.HTTPConnection object at 0x7f283c5369d0>: Failed to resolve 'images.cocodataset.org' ([Errno -3] Temporary failure in name resolution)\"))"
+    },
+    {
+      "img_id": 9400,
+      "file_name": "000000009400.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 11197,
+      "file_name": "000000011197.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 12576,
+      "file_name": "000000012576.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 13659,
+      "file_name": "000000013659.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 13923,
+      "file_name": "000000013923.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 14439,
+      "file_name": "000000014439.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 16958,
+      "file_name": "000000016958.jpg",
+      "ok": false,
+      "reason": "HTTPConnectionPool(host='images.cocodataset.org', port=80): Max retries exceeded with url: /val2017/000000016958.jpg (Caused by NameResolutionError(\"<urllib3.connection.HTTPConnection object at 0x7f283c4d60a0>: Failed to resolve 'images.cocodataset.org' ([Errno -3] Temporary failure in name resolution)\"))"
+    },
+    {
+      "img_id": 17029,
+      "file_name": "000000017029.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 20553,
+      "file_name": "000000020553.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 25394,
+      "file_name": "000000025394.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 29984,
+      "file_name": "000000029984.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 32610,
+      "file_name": "000000032610.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 32901,
+      "file_name": "000000032901.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 33109,
+      "file_name": "000000033109.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 38829,
+      "file_name": "000000038829.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 39405,
+      "file_name": "000000039405.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 40083,
+      "file_name": "000000040083.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 57150,
+      "file_name": "000000057150.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 57760,
+      "file_name": "000000057760.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 59598,
+      "file_name": "000000059598.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 59635,
+      "file_name": "000000059635.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 70774,
+      "file_name": "000000070774.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 71226,
+      "file_name": "000000071226.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 73326,
+      "file_name": "000000073326.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 74058,
+      "file_name": "000000074058.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 78748,
+      "file_name": "000000078748.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 79034,
+      "file_name": "000000079034.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 81766,
+      "file_name": "000000081766.jpg",
+      "ok": false,
+      "reason": "HTTPConnectionPool(host='images.cocodataset.org', port=80): Max retries exceeded with url: /val2017/000000081766.jpg (Caused by NameResolutionError(\"<urllib3.connection.HTTPConnection object at 0x7f283c4d6460>: Failed to resolve 'images.cocodataset.org' ([Errno -3] Temporary failure in name resolution)\"))"
+    },
+    {
+      "img_id": 82812,
+      "file_name": "000000082812.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 82821,
+      "file_name": "000000082821.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 84241,
+      "file_name": "000000084241.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 84650,
+      "file_name": "000000084650.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 89880,
+      "file_name": "000000089880.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 90003,
+      "file_name": "000000090003.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 91500,
+      "file_name": "000000091500.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 94944,
+      "file_name": "000000094944.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 97337,
+      "file_name": "000000097337.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 97988,
+      "file_name": "000000097988.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 97994,
+      "file_name": "000000097994.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 100428,
+      "file_name": "000000100428.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 100723,
+      "file_name": "000000100723.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 102805,
+      "file_name": "000000102805.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 107226,
+      "file_name": "000000107226.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 109313,
+      "file_name": "000000109313.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 112298,
+      "file_name": "000000112298.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 125778,
+      "file_name": "000000125778.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 129756,
+      "file_name": "000000129756.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 132375,
+      "file_name": "000000132375.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 138550,
+      "file_name": "000000138550.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 141671,
+      "file_name": "000000141671.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 143961,
+      "file_name": "000000143961.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 144333,
+      "file_name": "000000144333.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 149568,
+      "file_name": "000000149568.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 150224,
+      "file_name": "000000150224.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 150417,
+      "file_name": "000000150417.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 156372,
+      "file_name": "000000156372.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 157365,
+      "file_name": "000000157365.jpg",
+      "ok": false,
+      "reason": "HTTPConnectionPool(host='images.cocodataset.org', port=80): Max retries exceeded with url: /val2017/000000157365.jpg (Caused by NameResolutionError(\"<urllib3.connection.HTTPConnection object at 0x7f283c4d6220>: Failed to resolve 'images.cocodataset.org' ([Errno -3] Temporary failure in name resolution)\"))"
+    },
+    {
+      "img_id": 163057,
+      "file_name": "000000163057.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 166426,
+      "file_name": "000000166426.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 167486,
+      "file_name": "000000167486.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 170670,
+      "file_name": "000000170670.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 176037,
+      "file_name": "000000176037.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 177489,
+      "file_name": "000000177489.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 180751,
+      "file_name": "000000180751.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 182805,
+      "file_name": "000000182805.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 183716,
+      "file_name": "000000183716.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 189213,
+      "file_name": "000000189213.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 198641,
+      "file_name": "000000198641.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 201426,
+      "file_name": "000000201426.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 210273,
+      "file_name": "000000210273.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 210855,
+      "file_name": "000000210855.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 213445,
+      "file_name": "000000213445.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 214224,
+      "file_name": "000000214224.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 223182,
+      "file_name": "000000223182.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 226171,
+      "file_name": "000000226171.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 226417,
+      "file_name": "000000226417.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 227044,
+      "file_name": "000000227044.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 236784,
+      "file_name": "000000236784.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 242060,
+      "file_name": "000000242060.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 245173,
+      "file_name": "000000245173.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 250619,
+      "file_name": "000000250619.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 253835,
+      "file_name": "000000253835.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 256407,
+      "file_name": "000000256407.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 256916,
+      "file_name": "000000256916.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 256941,
+      "file_name": "000000256941.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 259597,
+      "file_name": "000000259597.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 259640,
+      "file_name": "000000259640.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 259830,
+      "file_name": "000000259830.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 266206,
+      "file_name": "000000266206.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 267169,
+      "file_name": "000000267169.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 268378,
+      "file_name": "000000268378.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 269113,
+      "file_name": "000000269113.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 269632,
+      "file_name": "000000269632.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 273198,
+      "file_name": "000000273198.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 273711,
+      "file_name": "000000273711.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 278463,
+      "file_name": "000000278463.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 279730,
+      "file_name": "000000279730.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 281687,
+      "file_name": "000000281687.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 286553,
+      "file_name": "000000286553.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 289702,
+      "file_name": "000000289702.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 293071,
+      "file_name": "000000293071.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 296649,
+      "file_name": "000000296649.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 298396,
+      "file_name": "000000298396.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 301135,
+      "file_name": "000000301135.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 306139,
+      "file_name": "000000306139.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 311392,
+      "file_name": "000000311392.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 318238,
+      "file_name": "000000318238.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 319369,
+      "file_name": "000000319369.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 324258,
+      "file_name": "000000324258.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 325483,
+      "file_name": "000000325483.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 325838,
+      "file_name": "000000325838.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 329219,
+      "file_name": "000000329219.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 343561,
+      "file_name": "000000343561.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 346232,
+      "file_name": "000000346232.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 346703,
+      "file_name": "000000346703.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 347335,
+      "file_name": "000000347335.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 355240,
+      "file_name": "000000355240.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 356248,
+      "file_name": "000000356248.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 356387,
+      "file_name": "000000356387.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 356432,
+      "file_name": "000000356432.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 357737,
+      "file_name": "000000357737.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 357978,
+      "file_name": "000000357978.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 363840,
+      "file_name": "000000363840.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 365642,
+      "file_name": "000000365642.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 366884,
+      "file_name": "000000366884.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 376322,
+      "file_name": "000000376322.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 380913,
+      "file_name": "000000380913.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 396338,
+      "file_name": "000000396338.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 397354,
+      "file_name": "000000397354.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 405691,
+      "file_name": "000000405691.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 410880,
+      "file_name": "000000410880.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 411938,
+      "file_name": "000000411938.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 415194,
+      "file_name": "000000415194.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 424642,
+      "file_name": "000000424642.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 426372,
+      "file_name": "000000426372.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 427034,
+      "file_name": "000000427034.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 432553,
+      "file_name": "000000432553.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 433103,
+      "file_name": "000000433103.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 436738,
+      "file_name": "000000436738.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 448076,
+      "file_name": "000000448076.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 450303,
+      "file_name": "000000450303.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 453302,
+      "file_name": "000000453302.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 463283,
+      "file_name": "000000463283.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 463522,
+      "file_name": "000000463522.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 463618,
+      "file_name": "000000463618.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 465822,
+      "file_name": "000000465822.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 471023,
+      "file_name": "000000471023.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 475064,
+      "file_name": "000000475064.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 476787,
+      "file_name": "000000476787.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 477227,
+      "file_name": "000000477227.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 483999,
+      "file_name": "000000483999.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 486040,
+      "file_name": "000000486040.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 488592,
+      "file_name": "000000488592.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 492282,
+      "file_name": "000000492282.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 493286,
+      "file_name": "000000493286.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 499313,
+      "file_name": "000000499313.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 499768,
+      "file_name": "000000499768.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 503855,
+      "file_name": "000000503855.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 504589,
+      "file_name": "000000504589.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 507575,
+      "file_name": "000000507575.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 508370,
+      "file_name": "000000508370.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 512836,
+      "file_name": "000000512836.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 515579,
+      "file_name": "000000515579.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 516677,
+      "file_name": "000000516677.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 516916,
+      "file_name": "000000516916.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 520659,
+      "file_name": "000000520659.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 529148,
+      "file_name": "000000529148.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 532530,
+      "file_name": "000000532530.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 536947,
+      "file_name": "000000536947.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 537991,
+      "file_name": "000000537991.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 541123,
+      "file_name": "000000541123.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 547502,
+      "file_name": "000000547502.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 555597,
+      "file_name": "000000555597.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 562818,
+      "file_name": "000000562818.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 567740,
+      "file_name": "000000567740.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 568981,
+      "file_name": "000000568981.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 570456,
+      "file_name": "000000570456.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 570782,
+      "file_name": "000000570782.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    },
+    {
+      "img_id": 571857,
+      "file_name": "000000571857.jpg",
+      "ok": true,
+      "reason": "downloaded"
+    }
+  ],
+  "image_instance_stats": {
+    "25394:1": {
+      "total_non_crowd_instances": 24,
+      "category_non_crowd_instances": 3
+    },
+    "139077:1": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "110721:1": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "527750:1": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "40036:1": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "191614:1": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "183716:1": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 2
+    },
+    "504589:1": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 2
+    },
+    "471756:1": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "424642:1": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 3
+    },
+    "141671:1": {
+      "total_non_crowd_instances": 25,
+      "category_non_crowd_instances": 13
+    },
+    "415536:1": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "492282:1": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 4
+    },
+    "470773:1": {
+      "total_non_crowd_instances": 31,
+      "category_non_crowd_instances": 1
+    },
+    "100428:1": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 2
+    },
+    "311392:1": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 3
+    },
+    "568981:1": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 2
+    },
+    "562818:1": {
+      "total_non_crowd_instances": 23,
+      "category_non_crowd_instances": 13
+    },
+    "380913:1": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 6
+    },
+    "515579:1": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 3
+    },
+    "281687:1": {
+      "total_non_crowd_instances": 16,
+      "category_non_crowd_instances": 10
+    },
+    "220732:1": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "481386:1": {
+      "total_non_crowd_instances": 30,
+      "category_non_crowd_instances": 1
+    },
+    "343561:1": {
+      "total_non_crowd_instances": 28,
+      "category_non_crowd_instances": 13
+    },
+    "532530:1": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 4
+    },
+    "475064:1": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 3
+    },
+    "39405:1": {
+      "total_non_crowd_instances": 29,
+      "category_non_crowd_instances": 13
+    },
+    "463618:1": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 2
+    },
+    "213605:1": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "448076:1": {
+      "total_non_crowd_instances": 17,
+      "category_non_crowd_instances": 6
+    },
+    "267169:1": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 2
+    },
+    "396338:3": {
+      "total_non_crowd_instances": 12,
+      "category_non_crowd_instances": 2
+    },
+    "269632:3": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 3
+    },
+    "6040:3": {
+      "total_non_crowd_instances": 12,
+      "category_non_crowd_instances": 1
+    },
+    "79034:3": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 5
+    },
+    "296649:3": {
+      "total_non_crowd_instances": 25,
+      "category_non_crowd_instances": 4
+    },
+    "436738:3": {
+      "total_non_crowd_instances": 10,
+      "category_non_crowd_instances": 3
+    },
+    "176606:3": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "410880:3": {
+      "total_non_crowd_instances": 10,
+      "category_non_crowd_instances": 3
+    },
+    "157365:3": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 4
+    },
+    "365642:3": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 5
+    },
+    "33109:3": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 6
+    },
+    "14380:3": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "273198:3": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 3
+    },
+    "520009:3": {
+      "total_non_crowd_instances": 10,
+      "category_non_crowd_instances": 1
+    },
+    "426372:3": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 3
+    },
+    "17029:3": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 2
+    },
+    "163057:3": {
+      "total_non_crowd_instances": 22,
+      "category_non_crowd_instances": 4
+    },
+    "499768:3": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 2
+    },
+    "293071:3": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 3
+    },
+    "313588:3": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "555597:3": {
+      "total_non_crowd_instances": 16,
+      "category_non_crowd_instances": 12
+    },
+    "410712:3": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "493286:3": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 3
+    },
+    "477227:3": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 2
+    },
+    "144333:3": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 4
+    },
+    "11197:3": {
+      "total_non_crowd_instances": 16,
+      "category_non_crowd_instances": 2
+    },
+    "90003:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 2
+    },
+    "159458:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "305343:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "263463:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "139099:18": {
+      "total_non_crowd_instances": 29,
+      "category_non_crowd_instances": 1
+    },
+    "311190:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "89880:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 2
+    },
+    "189806:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "82807:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "367082:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "427034:18": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 2
+    },
+    "509403:18": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "61471:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "329219:18": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 1
+    },
+    "261161:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "67213:18": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 1
+    },
+    "520301:18": {
+      "total_non_crowd_instances": 1,
+      "category_non_crowd_instances": 1
+    },
+    "575357:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "143961:18": {
+      "total_non_crowd_instances": 20,
+      "category_non_crowd_instances": 2
+    },
+    "371699:18": {
+      "total_non_crowd_instances": 18,
+      "category_non_crowd_instances": 1
+    },
+    "71226:18": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 2
+    },
+    "139872:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "371749:18": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "222317:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "366884:18": {
+      "total_non_crowd_instances": 16,
+      "category_non_crowd_instances": 2
+    },
+    "338901:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "547502:18": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 4
+    },
+    "81766:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 3
+    },
+    "517832:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "355905:18": {
+      "total_non_crowd_instances": 1,
+      "category_non_crowd_instances": 1
+    },
+    "138492:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "236166:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "29393:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "366611:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "579321:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "151962:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "549220:18": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "512836:18": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 2
+    },
+    "564280:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "472375:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "505573:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "486479:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "407083:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "169076:18": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "318238:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 2
+    },
+    "205834:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "76417:18": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "309484:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "171611:18": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "297830:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "235399:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "291664:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "241326:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "479155:18": {
+      "total_non_crowd_instances": 19,
+      "category_non_crowd_instances": 1
+    },
+    "357459:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "251572:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "554579:18": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "126110:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "347930:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "399655:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "145781:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "555005:18": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 1
+    },
+    "219578:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "179392:18": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "134112:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "190140:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "364636:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "554002:18": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 1
+    },
+    "532575:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "412240:18": {
+      "total_non_crowd_instances": 1,
+      "category_non_crowd_instances": 1
+    },
+    "546829:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "161609:18": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "560880:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "80153:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "365207:18": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "289702:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 2
+    },
+    "78823:18": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "57760:18": {
+      "total_non_crowd_instances": 18,
+      "category_non_crowd_instances": 3
+    },
+    "255664:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "309938:18": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "415990:18": {
+      "total_non_crowd_instances": 16,
+      "category_non_crowd_instances": 1
+    },
+    "53529:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "149568:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 2
+    },
+    "471789:18": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 1
+    },
+    "236784:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 2
+    },
+    "355240:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 2
+    },
+    "392818:18": {
+      "total_non_crowd_instances": 1,
+      "category_non_crowd_instances": 1
+    },
+    "182805:18": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 2
+    },
+    "286422:18": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "52891:18": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "269113:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 4
+    },
+    "385997:18": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "452891:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "367195:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "494869:18": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "446522:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "225184:18": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "324158:18": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 1
+    },
+    "129756:18": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 2
+    },
+    "170278:18": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "490171:18": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "107226:18": {
+      "total_non_crowd_instances": 18,
+      "category_non_crowd_instances": 3
+    },
+    "206831:18": {
+      "total_non_crowd_instances": 1,
+      "category_non_crowd_instances": 1
+    },
+    "432553:18": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 2
+    },
+    "156643:47": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 1
+    },
+    "527029:47": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 1
+    },
+    "371677:47": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "286553:47": {
+      "total_non_crowd_instances": 18,
+      "category_non_crowd_instances": 3
+    },
+    "455937:47": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 1
+    },
+    "279730:47": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 2
+    },
+    "318114:47": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "483999:47": {
+      "total_non_crowd_instances": 41,
+      "category_non_crowd_instances": 13
+    },
+    "346703:47": {
+      "total_non_crowd_instances": 19,
+      "category_non_crowd_instances": 2
+    },
+    "294831:47": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "376264:47": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "80949:47": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "499313:47": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 2
+    },
+    "356432:47": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 2
+    },
+    "250137:47": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 1
+    },
+    "344100:47": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "301718:47": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 1
+    },
+    "150417:47": {
+      "total_non_crowd_instances": 12,
+      "category_non_crowd_instances": 5
+    },
+    "268378:47": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 2
+    },
+    "179141:47": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "546626:47": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "482436:47": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "227044:47": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 3
+    },
+    "415194:47": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 2
+    },
+    "226171:47": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 2
+    },
+    "356531:47": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "173004:47": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 1
+    },
+    "329219:47": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 13
+    },
+    "365387:47": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "231097:47": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 1
+    },
+    "279278:47": {
+      "total_non_crowd_instances": 22,
+      "category_non_crowd_instances": 1
+    },
+    "296222:47": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "435880:47": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "255165:47": {
+      "total_non_crowd_instances": 22,
+      "category_non_crowd_instances": 1
+    },
+    "283412:47": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "78426:47": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "492110:47": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 1
+    },
+    "109313:47": {
+      "total_non_crowd_instances": 10,
+      "category_non_crowd_instances": 2
+    },
+    "91779:47": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "283113:47": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "376365:47": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "463283:47": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 2
+    },
+    "242060:47": {
+      "total_non_crowd_instances": 12,
+      "category_non_crowd_instances": 3
+    },
+    "180487:47": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "82696:47": {
+      "total_non_crowd_instances": 12,
+      "category_non_crowd_instances": 1
+    },
+    "12576:47": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 4
+    },
+    "256407:47": {
+      "total_non_crowd_instances": 13,
+      "category_non_crowd_instances": 12
+    },
+    "32901:47": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 1
+    },
+    "240250:47": {
+      "total_non_crowd_instances": 22,
+      "category_non_crowd_instances": 1
+    },
+    "435208:47": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 1
+    },
+    "462371:47": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 1
+    },
+    "229311:47": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "436617:47": {
+      "total_non_crowd_instances": 33,
+      "category_non_crowd_instances": 1
+    },
+    "508370:47": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 3
+    },
+    "255824:47": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "347335:47": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 2
+    },
+    "417632:47": {
+      "total_non_crowd_instances": 17,
+      "category_non_crowd_instances": 1
+    },
+    "397354:47": {
+      "total_non_crowd_instances": 35,
+      "category_non_crowd_instances": 7
+    },
+    "429598:44": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "405691:44": {
+      "total_non_crowd_instances": 13,
+      "category_non_crowd_instances": 2
+    },
+    "476787:44": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 6
+    },
+    "166426:44": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 3
+    },
+    "170670:44": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 4
+    },
+    "20553:44": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 3
+    },
+    "180751:44": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 12
+    },
+    "73326:44": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 12
+    },
+    "177489:44": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 2
+    },
+    "84241:44": {
+      "total_non_crowd_instances": 18,
+      "category_non_crowd_instances": 2
+    },
+    "214224:44": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 5
+    },
+    "278463:44": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 2
+    },
+    "223182:44": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 2
+    },
+    "177934:44": {
+      "total_non_crowd_instances": 18,
+      "category_non_crowd_instances": 1
+    },
+    "266206:44": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 2
+    },
+    "474167:44": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "112298:44": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 7
+    },
+    "414034:44": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "390826:44": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "125778:44": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 7
+    },
+    "210855:44": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 2
+    },
+    "32901:44": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 6
+    },
+    "376322:44": {
+      "total_non_crowd_instances": 42,
+      "category_non_crowd_instances": 2
+    },
+    "32038:44": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "450303:44": {
+      "total_non_crowd_instances": 27,
+      "category_non_crowd_instances": 4
+    },
+    "90108:44": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "536947:44": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 2
+    },
+    "189213:62": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 2
+    },
+    "527427:62": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "113720:62": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 1
+    },
+    "91500:62": {
+      "total_non_crowd_instances": 18,
+      "category_non_crowd_instances": 4
+    },
+    "471023:62": {
+      "total_non_crowd_instances": 18,
+      "category_non_crowd_instances": 4
+    },
+    "13923:62": {
+      "total_non_crowd_instances": 19,
+      "category_non_crowd_instances": 5
+    },
+    "356248:62": {
+      "total_non_crowd_instances": 22,
+      "category_non_crowd_instances": 5
+    },
+    "97337:62": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 2
+    },
+    "517832:62": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "29984:62": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 2
+    },
+    "541123:62": {
+      "total_non_crowd_instances": 23,
+      "category_non_crowd_instances": 6
+    },
+    "127394:62": {
+      "total_non_crowd_instances": 22,
+      "category_non_crowd_instances": 1
+    },
+    "213445:62": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 2
+    },
+    "357978:62": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 3
+    },
+    "259597:62": {
+      "total_non_crowd_instances": 18,
+      "category_non_crowd_instances": 3
+    },
+    "246308:62": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "319369:62": {
+      "total_non_crowd_instances": 18,
+      "category_non_crowd_instances": 2
+    },
+    "573094:62": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 1
+    },
+    "298396:62": {
+      "total_non_crowd_instances": 27,
+      "category_non_crowd_instances": 4
+    },
+    "256916:62": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 2
+    },
+    "570456:62": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 3
+    },
+    "27620:62": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "451571:62": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "77396:62": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "273711:62": {
+      "total_non_crowd_instances": 37,
+      "category_non_crowd_instances": 7
+    },
+    "303653:62": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "385997:62": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "40083:62": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 1
+    },
+    "201426:62": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 2
+    },
+    "336356:62": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 1
+    },
+    "16958:62": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 3
+    },
+    "520659:62": {
+      "total_non_crowd_instances": 29,
+      "category_non_crowd_instances": 2
+    },
+    "138550:62": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 2
+    },
+    "381971:27": {
+      "total_non_crowd_instances": 16,
+      "category_non_crowd_instances": 1
+    },
+    "226417:27": {
+      "total_non_crowd_instances": 25,
+      "category_non_crowd_instances": 2
+    },
+    "306139:27": {
+      "total_non_crowd_instances": 26,
+      "category_non_crowd_instances": 1
+    },
+    "3255:27": {
+      "total_non_crowd_instances": 10,
+      "category_non_crowd_instances": 3
+    },
+    "55150:27": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 1
+    },
+    "18150:27": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "220764:27": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "52996:27": {
+      "total_non_crowd_instances": 23,
+      "category_non_crowd_instances": 1
+    },
+    "253742:27": {
+      "total_non_crowd_instances": 28,
+      "category_non_crowd_instances": 1
+    },
+    "50145:27": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 1
+    },
+    "100723:27": {
+      "total_non_crowd_instances": 17,
+      "category_non_crowd_instances": 2
+    },
+    "156372:27": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 2
+    },
+    "346232:27": {
+      "total_non_crowd_instances": 20,
+      "category_non_crowd_instances": 4
+    },
+    "38829:27": {
+      "total_non_crowd_instances": 12,
+      "category_non_crowd_instances": 1
+    },
+    "84650:27": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 2
+    },
+    "1268:27": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 1
+    },
+    "393569:27": {
+      "total_non_crowd_instances": 10,
+      "category_non_crowd_instances": 1
+    },
+    "534041:27": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 1
+    },
+    "545594:27": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "503855:27": {
+      "total_non_crowd_instances": 17,
+      "category_non_crowd_instances": 2
+    },
+    "253835:27": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 2
+    },
+    "434204:27": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "78748:27": {
+      "total_non_crowd_instances": 19,
+      "category_non_crowd_instances": 2
+    },
+    "357742:27": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "132796:27": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "361586:27": {
+      "total_non_crowd_instances": 18,
+      "category_non_crowd_instances": 1
+    },
+    "577932:27": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 1
+    },
+    "439854:27": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 1
+    },
+    "458223:27": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "57150:27": {
+      "total_non_crowd_instances": 23,
+      "category_non_crowd_instances": 9
+    },
+    "10707:27": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 1
+    },
+    "516677:27": {
+      "total_non_crowd_instances": 22,
+      "category_non_crowd_instances": 5
+    },
+    "94944:27": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 2
+    },
+    "14439:27": {
+      "total_non_crowd_instances": 20,
+      "category_non_crowd_instances": 4
+    },
+    "163117:27": {
+      "total_non_crowd_instances": 27,
+      "category_non_crowd_instances": 1
+    },
+    "190753:27": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 1
+    },
+    "17959:27": {
+      "total_non_crowd_instances": 24,
+      "category_non_crowd_instances": 1
+    },
+    "37751:27": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "150224:27": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 4
+    },
+    "567740:27": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 2
+    },
+    "250619:27": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 2
+    },
+    "301135:27": {
+      "total_non_crowd_instances": 23,
+      "category_non_crowd_instances": 2
+    },
+    "32887:27": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "308793:27": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "235784:27": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "549390:27": {
+      "total_non_crowd_instances": 19,
+      "category_non_crowd_instances": 1
+    },
+    "411938:27": {
+      "total_non_crowd_instances": 17,
+      "category_non_crowd_instances": 1
+    },
+    "125572:27": {
+      "total_non_crowd_instances": 28,
+      "category_non_crowd_instances": 1
+    },
+    "303566:27": {
+      "total_non_crowd_instances": 53,
+      "category_non_crowd_instances": 1
+    },
+    "82812:27": {
+      "total_non_crowd_instances": 24,
+      "category_non_crowd_instances": 3
+    },
+    "102805:27": {
+      "total_non_crowd_instances": 10,
+      "category_non_crowd_instances": 2
+    },
+    "176037:27": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 2
+    },
+    "291634:2": {
+      "total_non_crowd_instances": 17,
+      "category_non_crowd_instances": 1
+    },
+    "190753:2": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 1
+    },
+    "177861:2": {
+      "total_non_crowd_instances": 19,
+      "category_non_crowd_instances": 1
+    },
+    "8211:2": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "266400:2": {
+      "total_non_crowd_instances": 12,
+      "category_non_crowd_instances": 1
+    },
+    "259640:2": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 4
+    },
+    "384527:2": {
+      "total_non_crowd_instances": 26,
+      "category_non_crowd_instances": 1
+    },
+    "152771:2": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "167486:2": {
+      "total_non_crowd_instances": 10,
+      "category_non_crowd_instances": 2
+    },
+    "67616:2": {
+      "total_non_crowd_instances": 37,
+      "category_non_crowd_instances": 1
+    },
+    "426166:2": {
+      "total_non_crowd_instances": 1,
+      "category_non_crowd_instances": 1
+    },
+    "429109:2": {
+      "total_non_crowd_instances": 10,
+      "category_non_crowd_instances": 1
+    },
+    "448365:2": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "76416:2": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "38829:2": {
+      "total_non_crowd_instances": 12,
+      "category_non_crowd_instances": 2
+    },
+    "571857:2": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 2
+    },
+    "97988:2": {
+      "total_non_crowd_instances": 17,
+      "category_non_crowd_instances": 3
+    },
+    "439854:2": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 1
+    },
+    "301376:2": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 1
+    },
+    "109055:2": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "245173:2": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 2
+    },
+    "82821:2": {
+      "total_non_crowd_instances": 31,
+      "category_non_crowd_instances": 6
+    },
+    "351530:2": {
+      "total_non_crowd_instances": 23,
+      "category_non_crowd_instances": 1
+    },
+    "59635:2": {
+      "total_non_crowd_instances": 25,
+      "category_non_crowd_instances": 5
+    },
+    "256941:2": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 2
+    },
+    "135410:2": {
+      "total_non_crowd_instances": 10,
+      "category_non_crowd_instances": 1
+    },
+    "472623:2": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "138639:2": {
+      "total_non_crowd_instances": 19,
+      "category_non_crowd_instances": 1
+    },
+    "261888:2": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "5001:2": {
+      "total_non_crowd_instances": 17,
+      "category_non_crowd_instances": 1
+    },
+    "341469:2": {
+      "total_non_crowd_instances": 13,
+      "category_non_crowd_instances": 1
+    },
+    "184611:2": {
+      "total_non_crowd_instances": 22,
+      "category_non_crowd_instances": 1
+    },
+    "132375:2": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 2
+    },
+    "193926:2": {
+      "total_non_crowd_instances": 12,
+      "category_non_crowd_instances": 1
+    },
+    "70774:2": {
+      "total_non_crowd_instances": 12,
+      "category_non_crowd_instances": 3
+    },
+    "356387:2": {
+      "total_non_crowd_instances": 20,
+      "category_non_crowd_instances": 2
+    },
+    "563604:2": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 1
+    },
+    "350023:2": {
+      "total_non_crowd_instances": 25,
+      "category_non_crowd_instances": 1
+    },
+    "357737:2": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 2
+    },
+    "350003:2": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "210273:2": {
+      "total_non_crowd_instances": 41,
+      "category_non_crowd_instances": 2
+    },
+    "40083:2": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 2
+    },
+    "428111:2": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "74058:2": {
+      "total_non_crowd_instances": 27,
+      "category_non_crowd_instances": 2
+    },
+    "468505:2": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 1
+    },
+    "488592:2": {
+      "total_non_crowd_instances": 13,
+      "category_non_crowd_instances": 5
+    },
+    "356612:2": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 1
+    },
+    "277005:2": {
+      "total_non_crowd_instances": 20,
+      "category_non_crowd_instances": 1
+    },
+    "463522:2": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 3
+    },
+    "274687:2": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "259830:2": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 3
+    },
+    "411938:2": {
+      "total_non_crowd_instances": 17,
+      "category_non_crowd_instances": 5
+    },
+    "310980:73": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "80949:73": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "494427:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "455157:73": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "4795:73": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "275749:73": {
+      "total_non_crowd_instances": 19,
+      "category_non_crowd_instances": 1
+    },
+    "181499:73": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "232684:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "37740:73": {
+      "total_non_crowd_instances": 22,
+      "category_non_crowd_instances": 1
+    },
+    "255165:73": {
+      "total_non_crowd_instances": 22,
+      "category_non_crowd_instances": 1
+    },
+    "119365:73": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "225757:73": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "537991:73": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 2
+    },
+    "244833:73": {
+      "total_non_crowd_instances": 20,
+      "category_non_crowd_instances": 1
+    },
+    "507575:73": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 2
+    },
+    "447611:73": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "51008:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "326082:73": {
+      "total_non_crowd_instances": 17,
+      "category_non_crowd_instances": 1
+    },
+    "11813:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "426241:73": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "332845:73": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "60449:73": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "553788:73": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "367569:73": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "316015:73": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "367095:73": {
+      "total_non_crowd_instances": 25,
+      "category_non_crowd_instances": 1
+    },
+    "580410:73": {
+      "total_non_crowd_instances": 19,
+      "category_non_crowd_instances": 1
+    },
+    "294831:73": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "558114:73": {
+      "total_non_crowd_instances": 17,
+      "category_non_crowd_instances": 1
+    },
+    "564336:73": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 1
+    },
+    "26465:73": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "465718:73": {
+      "total_non_crowd_instances": 12,
+      "category_non_crowd_instances": 1
+    },
+    "139077:73": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "124659:73": {
+      "total_non_crowd_instances": 19,
+      "category_non_crowd_instances": 1
+    },
+    "451155:73": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "399560:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "182202:73": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "246308:73": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "516916:73": {
+      "total_non_crowd_instances": 10,
+      "category_non_crowd_instances": 3
+    },
+    "465822:73": {
+      "total_non_crowd_instances": 25,
+      "category_non_crowd_instances": 2
+    },
+    "425390:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "215778:73": {
+      "total_non_crowd_instances": 19,
+      "category_non_crowd_instances": 1
+    },
+    "529148:73": {
+      "total_non_crowd_instances": 17,
+      "category_non_crowd_instances": 3
+    },
+    "368684:73": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 1
+    },
+    "504074:73": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "35279:73": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "497344:73": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "413247:73": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "294162:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "290843:73": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "232088:73": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "110449:73": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "546717:73": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "574315:73": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "198641:73": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 2
+    },
+    "176446:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "385719:73": {
+      "total_non_crowd_instances": 17,
+      "category_non_crowd_instances": 1
+    },
+    "321118:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "570782:73": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 2
+    },
+    "455937:73": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 1
+    },
+    "494634:73": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "541664:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "1503:73": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "19786:73": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "271728:73": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "27620:73": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "492110:73": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 1
+    },
+    "174231:73": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "387098:73": {
+      "total_non_crowd_instances": 24,
+      "category_non_crowd_instances": 1
+    },
+    "111609:73": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "371677:73": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "82765:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "343076:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "519764:73": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "301421:73": {
+      "total_non_crowd_instances": 10,
+      "category_non_crowd_instances": 1
+    },
+    "135872:73": {
+      "total_non_crowd_instances": 12,
+      "category_non_crowd_instances": 1
+    },
+    "160556:73": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "77595:73": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "433103:73": {
+      "total_non_crowd_instances": 19,
+      "category_non_crowd_instances": 7
+    },
+    "325838:73": {
+      "total_non_crowd_instances": 18,
+      "category_non_crowd_instances": 7
+    },
+    "178469:73": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "16439:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "306139:73": {
+      "total_non_crowd_instances": 26,
+      "category_non_crowd_instances": 7
+    },
+    "553664:73": {
+      "total_non_crowd_instances": 17,
+      "category_non_crowd_instances": 1
+    },
+    "243199:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "13659:73": {
+      "total_non_crowd_instances": 18,
+      "category_non_crowd_instances": 2
+    },
+    "63602:73": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "383842:73": {
+      "total_non_crowd_instances": 16,
+      "category_non_crowd_instances": 1
+    },
+    "345252:73": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "524456:73": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "393569:73": {
+      "total_non_crowd_instances": 10,
+      "category_non_crowd_instances": 1
+    },
+    "63740:73": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 1
+    },
+    "376264:73": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "348481:73": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "222299:73": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "482970:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "372466:73": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "229659:73": {
+      "total_non_crowd_instances": 29,
+      "category_non_crowd_instances": 1
+    },
+    "76731:73": {
+      "total_non_crowd_instances": 1,
+      "category_non_crowd_instances": 1
+    },
+    "166478:73": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "302030:73": {
+      "total_non_crowd_instances": 19,
+      "category_non_crowd_instances": 1
+    },
+    "134112:73": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "363840:73": {
+      "total_non_crowd_instances": 12,
+      "category_non_crowd_instances": 2
+    },
+    "555009:73": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "26564:73": {
+      "total_non_crowd_instances": 19,
+      "category_non_crowd_instances": 1
+    },
+    "32610:73": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 6
+    },
+    "248631:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "51610:73": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "547144:73": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "325483:73": {
+      "total_non_crowd_instances": 27,
+      "category_non_crowd_instances": 2
+    },
+    "172595:73": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 1
+    },
+    "425361:73": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "119233:73": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "303713:73": {
+      "total_non_crowd_instances": 25,
+      "category_non_crowd_instances": 1
+    },
+    "510329:73": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "497599:73": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "477805:73": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "324258:73": {
+      "total_non_crowd_instances": 21,
+      "category_non_crowd_instances": 2
+    },
+    "115885:73": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "248314:73": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "131138:73": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 1
+    },
+    "195918:73": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "24610:73": {
+      "total_non_crowd_instances": 16,
+      "category_non_crowd_instances": 1
+    },
+    "134882:73": {
+      "total_non_crowd_instances": 17,
+      "category_non_crowd_instances": 1
+    },
+    "553669:73": {
+      "total_non_crowd_instances": 23,
+      "category_non_crowd_instances": 1
+    },
+    "206218:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "435880:73": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "78420:73": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "76547:73": {
+      "total_non_crowd_instances": 13,
+      "category_non_crowd_instances": 1
+    },
+    "428280:73": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "403817:73": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "148620:73": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "527427:73": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "415716:73": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "89648:73": {
+      "total_non_crowd_instances": 37,
+      "category_non_crowd_instances": 1
+    },
+    "97994:73": {
+      "total_non_crowd_instances": 20,
+      "category_non_crowd_instances": 3
+    },
+    "379441:73": {
+      "total_non_crowd_instances": 19,
+      "category_non_crowd_instances": 1
+    },
+    "342367:73": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "363461:73": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "433192:73": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "287347:73": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 1
+    },
+    "154705:73": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "358525:73": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "9400:73": {
+      "total_non_crowd_instances": 24,
+      "category_non_crowd_instances": 5
+    },
+    "397303:73": {
+      "total_non_crowd_instances": 38,
+      "category_non_crowd_instances": 1
+    },
+    "565877:73": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "324715:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "147415:73": {
+      "total_non_crowd_instances": 10,
+      "category_non_crowd_instances": 1
+    },
+    "177015:73": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "435003:73": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "513688:73": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "486040:73": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 2
+    },
+    "239318:73": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "86582:73": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "312213:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "14226:73": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "371699:73": {
+      "total_non_crowd_instances": 18,
+      "category_non_crowd_instances": 1
+    },
+    "525247:73": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "340894:73": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 1
+    },
+    "435208:73": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 1
+    },
+    "344100:73": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "77396:73": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "360951:73": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "136600:73": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "479126:73": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "119828:73": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "190236:73": {
+      "total_non_crowd_instances": 28,
+      "category_non_crowd_instances": 1
+    },
+    "10707:73": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 1
+    },
+    "59598:73": {
+      "total_non_crowd_instances": 10,
+      "category_non_crowd_instances": 2
+    },
+    "292446:73": {
+      "total_non_crowd_instances": 13,
+      "category_non_crowd_instances": 1
+    },
+    "46031:73": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "466125:73": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "182162:73": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "370478:73": {
+      "total_non_crowd_instances": 12,
+      "category_non_crowd_instances": 1
+    },
+    "262227:73": {
+      "total_non_crowd_instances": 11,
+      "category_non_crowd_instances": 1
+    },
+    "112798:73": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "459153:73": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "99428:73": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "22371:73": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "441247:78": {
+      "total_non_crowd_instances": 24,
+      "category_non_crowd_instances": 1
+    },
+    "319696:78": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "216497:78": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "127182:78": {
+      "total_non_crowd_instances": 10,
+      "category_non_crowd_instances": 1
+    },
+    "173008:78": {
+      "total_non_crowd_instances": 18,
+      "category_non_crowd_instances": 1
+    },
+    "419653:78": {
+      "total_non_crowd_instances": 19,
+      "category_non_crowd_instances": 1
+    },
+    "425226:78": {
+      "total_non_crowd_instances": 13,
+      "category_non_crowd_instances": 1
+    },
+    "445658:78": {
+      "total_non_crowd_instances": 12,
+      "category_non_crowd_instances": 1
+    },
+    "488075:78": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 1
+    },
+    "407614:78": {
+      "total_non_crowd_instances": 13,
+      "category_non_crowd_instances": 1
+    },
+    "215644:78": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "222455:78": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "453302:78": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 2
+    },
+    "438774:78": {
+      "total_non_crowd_instances": 17,
+      "category_non_crowd_instances": 1
+    },
+    "68833:78": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "522007:78": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "160556:78": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "14038:78": {
+      "total_non_crowd_instances": 24,
+      "category_non_crowd_instances": 1
+    },
+    "246436:78": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "465129:78": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 1
+    },
+    "91615:78": {
+      "total_non_crowd_instances": 12,
+      "category_non_crowd_instances": 1
+    },
+    "444275:78": {
+      "total_non_crowd_instances": 1,
+      "category_non_crowd_instances": 1
+    },
+    "40471:78": {
+      "total_non_crowd_instances": 20,
+      "category_non_crowd_instances": 1
+    },
+    "159791:78": {
+      "total_non_crowd_instances": 15,
+      "category_non_crowd_instances": 1
+    },
+    "139:78": {
+      "total_non_crowd_instances": 20,
+      "category_non_crowd_instances": 1
+    },
+    "446005:78": {
+      "total_non_crowd_instances": 5,
+      "category_non_crowd_instances": 1
+    },
+    "186980:78": {
+      "total_non_crowd_instances": 14,
+      "category_non_crowd_instances": 1
+    },
+    "313130:78": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "575970:78": {
+      "total_non_crowd_instances": 29,
+      "category_non_crowd_instances": 1
+    },
+    "7574:78": {
+      "total_non_crowd_instances": 12,
+      "category_non_crowd_instances": 1
+    },
+    "508312:78": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "445846:78": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "482719:78": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "269866:78": {
+      "total_non_crowd_instances": 1,
+      "category_non_crowd_instances": 1
+    },
+    "292060:78": {
+      "total_non_crowd_instances": 17,
+      "category_non_crowd_instances": 1
+    },
+    "426253:78": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "322163:78": {
+      "total_non_crowd_instances": 19,
+      "category_non_crowd_instances": 1
+    },
+    "525083:78": {
+      "total_non_crowd_instances": 9,
+      "category_non_crowd_instances": 1
+    },
+    "246968:78": {
+      "total_non_crowd_instances": 22,
+      "category_non_crowd_instances": 1
+    },
+    "109976:78": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "543047:78": {
+      "total_non_crowd_instances": 16,
+      "category_non_crowd_instances": 1
+    },
+    "199681:78": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "540502:78": {
+      "total_non_crowd_instances": 20,
+      "category_non_crowd_instances": 1
+    },
+    "283717:78": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "365766:78": {
+      "total_non_crowd_instances": 3,
+      "category_non_crowd_instances": 1
+    },
+    "237928:78": {
+      "total_non_crowd_instances": 4,
+      "category_non_crowd_instances": 1
+    },
+    "577584:78": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "207538:78": {
+      "total_non_crowd_instances": 1,
+      "category_non_crowd_instances": 1
+    },
+    "97022:78": {
+      "total_non_crowd_instances": 6,
+      "category_non_crowd_instances": 1
+    },
+    "498463:78": {
+      "total_non_crowd_instances": 2,
+      "category_non_crowd_instances": 1
+    },
+    "571313:78": {
+      "total_non_crowd_instances": 8,
+      "category_non_crowd_instances": 1
+    },
+    "466986:78": {
+      "total_non_crowd_instances": 7,
+      "category_non_crowd_instances": 1
+    },
+    "520264:78": {
+      "total_non_crowd_instances": 18,
+      "category_non_crowd_instances": 1
+    }
+  }
+}

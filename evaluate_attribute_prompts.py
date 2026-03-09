@@ -10,7 +10,7 @@ from collections import defaultdict
 import cv2
 import numpy as np
 import torch
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 from tqdm import tqdm
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
@@ -137,15 +137,36 @@ def iou_xyxy(a, b):
 
 
 def draw_vis(image_path, gt_box, pred_box, title_lines, out_path):
+    def _get_chinese_font(size=16):
+        font_candidates = [
+            "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+            "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc",
+            "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",
+            "/usr/share/fonts/truetype/arphic/ukai.ttc",
+            "/System/Library/Fonts/PingFang.ttc",
+            "/System/Library/Fonts/STHeiti Light.ttc",
+        ]
+        for path in font_candidates:
+            if os.path.exists(path):
+                try:
+                    return ImageFont.truetype(path, size=size)
+                except Exception:
+                    continue
+        return ImageFont.load_default()
+
     image = Image.open(image_path).convert("RGB")
     draw = ImageDraw.Draw(image)
+    font = _get_chinese_font(size=16)
     # GT: green, Pred: red
     draw.rectangle(gt_box, outline=(0, 255, 0), width=3)
     if pred_box is not None:
         draw.rectangle(pred_box, outline=(255, 0, 0), width=3)
     text = " | ".join(title_lines)
-    draw.rectangle((5, 5, min(5 + 12 * len(text), image.size[0] - 5), 28), fill=(0, 0, 0))
-    draw.text((8, 8), text, fill=(255, 255, 255))
+    text_bbox = draw.textbbox((8, 8), text, font=font)
+    box_right = min(text_bbox[2] + 6, image.size[0] - 5)
+    box_bottom = min(text_bbox[3] + 4, image.size[1] - 5)
+    draw.rectangle((5, 5, box_right, box_bottom), fill=(0, 0, 0))
+    draw.text((8, 8), text, fill=(255, 255, 255), font=font)
     image.save(out_path)
 
 
@@ -332,6 +353,7 @@ def main():
                         "task_id": task["task_id"],
                         "attribute_type": task["attribute_type"],
                         "prompt": prompt_zh,
+                        "prompt_en": translated_prompt if translated_prompt else prompt_zh,
                         "target_bbox_xyxy": task["target_bbox_xyxy"],
                         "best_pred_bbox": best_pred_bbox,
                         "best_iou": best_iou,
@@ -391,7 +413,7 @@ def main():
                 item["best_pred_bbox"],
                 [
                     f"attr={attr_type}",
-                    f"prompt={item['prompt']}",
+                    f"prompt={item['prompt_en']}",
                     f"iou={item['best_iou']:.3f}",
                     f"score={item['best_pred_score']:.3f}",
                 ],
@@ -408,7 +430,7 @@ def main():
                 item["best_pred_bbox"],
                 [
                     f"attr={attr_type}",
-                    f"prompt={item['prompt']}",
+                    f"prompt={item['prompt_en']}",
                     f"iou={item['best_iou']:.3f}",
                     f"score={item['best_pred_score']:.3f}",
                 ],

@@ -90,15 +90,62 @@ def normalize_translated_prompt(original_prompt, translated_prompt):
         prompt = f"{prompt}s"
     return prompt
 
-# 保证标注框上的标签显示原始的提示词
-def relabel_phrases_with_original_prompt(pred_phrases, original_prompt):
+def split_prompt_segments(text):
+    segments = re.split(r"[。.!?;；\n]+", text)
+    return [segment.strip() for segment in segments if segment.strip()]
+
+
+def normalize_phrase_for_match(text):
+    text = text.strip().lower()
+    text = re.sub(r"\s+", " ", text)
+    text = text.rstrip(" .!?")
+    text = re.sub(r"^(a|an|the)\s+", "", text)
+    return text
+
+
+def singularize_simple(text):
+    if text.endswith("es") and len(text) > 3:
+        return text[:-2]
+    if text.endswith("s") and not text.endswith("ss") and len(text) > 2:
+        return text[:-1]
+    return text
+
+
+def build_phrase_label_map(original_prompt, translated_prompt):
+    original_segments = split_prompt_segments(original_prompt)
+    translated_segments = split_prompt_segments(translated_prompt)
+    prompt_map = {}
+
+    for zh_seg, en_seg in zip(original_segments, translated_segments):
+        normalized_en = normalize_phrase_for_match(en_seg)
+        variants = {
+            normalized_en,
+            singularize_simple(normalized_en),
+        }
+        for variant in variants:
+            if variant:
+                prompt_map[variant] = zh_seg
+    return prompt_map
+
+
+def relabel_phrases_with_prompt_map(pred_phrases, prompt_map, original_prompt):
     relabeled = []
+    single_prompt_fallback = split_prompt_segments(original_prompt)
+    default_label = single_prompt_fallback[0] if len(single_prompt_fallback) == 1 else original_prompt
+
     for phrase in pred_phrases:
+        score = ""
+        phrase_text = phrase
         if "(" in phrase and phrase.endswith(")"):
             score = phrase[phrase.rfind("("):]
-            relabeled.append(f"{original_prompt}{score}")
-        else:
-            relabeled.append(original_prompt)
+            phrase_text = phrase[:phrase.rfind("(")]
+
+        normalized_phrase = normalize_phrase_for_match(phrase_text)
+        label = prompt_map.get(normalized_phrase)
+        if label is None:
+            label = prompt_map.get(singularize_simple(normalized_phrase), default_label)
+
+        relabeled.append(f"{label}{score}" if score else label)
     return relabeled
 
 
@@ -316,7 +363,8 @@ if __name__ == "__main__":
         model, image, prompt_for_inference, box_threshold, text_threshold, device=device
     )
     if enable_translate and display_chinese_label and translator.contains_chinese(text_prompt):
-        pred_phrases = relabel_phrases_with_original_prompt(pred_phrases, text_prompt)
+        phrase_label_map = build_phrase_label_map(text_prompt, translated_prompt)
+        pred_phrases = relabel_phrases_with_prompt_map(pred_phrases, phrase_label_map, text_prompt)
 
     # initialize SAM
     if use_sam_hq:

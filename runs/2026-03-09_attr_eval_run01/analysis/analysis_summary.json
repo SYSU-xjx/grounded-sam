@@ -1,0 +1,411 @@
+{
+  "overall_ref": {
+    "num_images": 176,
+    "num_tasks": 1854,
+    "num_hit": 616,
+    "acc": 0.33225458468176916,
+    "by_attribute": {
+      "size": {
+        "num_tasks": 618,
+        "num_hit": 236,
+        "acc": 0.3818770226537217
+      },
+      "spatial": {
+        "num_tasks": 1236,
+        "num_hit": 380,
+        "acc": 0.3074433656957929
+      }
+    },
+    "by_category": {
+      "person": {
+        "num_tasks": 582,
+        "num_hit": 118,
+        "acc": 0.2027491408934708
+      },
+      "laptop": {
+        "num_tasks": 120,
+        "num_hit": 60,
+        "acc": 0.5
+      },
+      "cup": {
+        "num_tasks": 174,
+        "num_hit": 64,
+        "acc": 0.367816091954023
+      },
+      "car": {
+        "num_tasks": 174,
+        "num_hit": 56,
+        "acc": 0.3218390804597701
+      },
+      "backpack": {
+        "num_tasks": 132,
+        "num_hit": 42,
+        "acc": 0.3181818181818182
+      },
+      "chair": {
+        "num_tasks": 240,
+        "num_hit": 85,
+        "acc": 0.3541666666666667
+      },
+      "bottle": {
+        "num_tasks": 180,
+        "num_hit": 82,
+        "acc": 0.45555555555555555
+      },
+      "bicycle": {
+        "num_tasks": 132,
+        "num_hit": 40,
+        "acc": 0.30303030303030304
+      },
+      "dog": {
+        "num_tasks": 114,
+        "num_hit": 63,
+        "acc": 0.5526315789473685
+      },
+      "microwave": {
+        "num_tasks": 6,
+        "num_hit": 6,
+        "acc": 1.0
+      }
+    }
+  },
+  "image_stats": {
+    "num_images": 179,
+    "mean_image_acc": 0.3405,
+    "p25_image_acc": 0.1667,
+    "p50_image_acc": 0.3333,
+    "p75_image_acc": 0.5,
+    "min_image_acc": 0.0,
+    "max_image_acc": 1.0
+  },
+  "by_attribute": [
+    {
+      "attribute_type": "size",
+      "num_tasks": 618,
+      "num_hit": 236,
+      "acc": 0.3819,
+      "mean_iou": 0.3646
+    },
+    {
+      "attribute_type": "spatial",
+      "num_tasks": 1236,
+      "num_hit": 380,
+      "acc": 0.3074,
+      "mean_iou": 0.2906
+    }
+  ],
+  "by_category": [
+    {
+      "category_en": "person",
+      "num_tasks": 582,
+      "num_hit": 118,
+      "acc": 0.2027,
+      "mean_iou": 0.1975
+    },
+    {
+      "category_en": "chair",
+      "num_tasks": 240,
+      "num_hit": 85,
+      "acc": 0.3542,
+      "mean_iou": 0.3401
+    },
+    {
+      "category_en": "bottle",
+      "num_tasks": 180,
+      "num_hit": 82,
+      "acc": 0.4556,
+      "mean_iou": 0.4134
+    },
+    {
+      "category_en": "car",
+      "num_tasks": 174,
+      "num_hit": 56,
+      "acc": 0.3218,
+      "mean_iou": 0.2959
+    },
+    {
+      "category_en": "cup",
+      "num_tasks": 174,
+      "num_hit": 64,
+      "acc": 0.3678,
+      "mean_iou": 0.3397
+    },
+    {
+      "category_en": "backpack",
+      "num_tasks": 132,
+      "num_hit": 42,
+      "acc": 0.3182,
+      "mean_iou": 0.2952
+    },
+    {
+      "category_en": "bicycle",
+      "num_tasks": 132,
+      "num_hit": 40,
+      "acc": 0.303,
+      "mean_iou": 0.3036
+    },
+    {
+      "category_en": "laptop",
+      "num_tasks": 120,
+      "num_hit": 60,
+      "acc": 0.5,
+      "mean_iou": 0.4604
+    },
+    {
+      "category_en": "dog",
+      "num_tasks": 114,
+      "num_hit": 63,
+      "acc": 0.5526,
+      "mean_iou": 0.5555
+    },
+    {
+      "category_en": "microwave",
+      "num_tasks": 6,
+      "num_hit": 6,
+      "acc": 1.0,
+      "mean_iou": 0.8836
+    }
+  ],
+  "miss_reasons": [
+    {
+      "miss_reason": "low_iou",
+      "count": 513,
+      "ratio_in_miss": 0.4144,
+      "ratio_in_all_tasks": 0.2767
+    },
+    {
+      "miss_reason": "wrong_instance",
+      "count": 493,
+      "ratio_in_miss": 0.3982,
+      "ratio_in_all_tasks": 0.2659
+    },
+    {
+      "miss_reason": "no_box",
+      "count": 232,
+      "ratio_in_miss": 0.1874,
+      "ratio_in_all_tasks": 0.1251
+    }
+  ],
+  "top_failed_tasks": [
+    {
+      "task_id": "9400_1294548_size_smallest",
+      "image_id": 9400,
+      "file_name": "000000009400.jpg",
+      "attribute_type": "size",
+      "category_en": "person",
+      "prompt_zh": "最小的人",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "9400_1294548_spatial_topmost",
+      "image_id": 9400,
+      "file_name": "000000009400.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最上方的人",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "9400_1292246_spatial_bottommost",
+      "image_id": 9400,
+      "file_name": "000000009400.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最下方的人",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "11197_1237643_size_smallest",
+      "image_id": 11197,
+      "file_name": "000000011197.jpg",
+      "attribute_type": "size",
+      "category_en": "person",
+      "prompt_zh": "最小的人",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "11197_1237643_spatial_topmost",
+      "image_id": 11197,
+      "file_name": "000000011197.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最上方的人",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "11197_2157164_spatial_bottommost",
+      "image_id": 11197,
+      "file_name": "000000011197.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最下方的人",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "13659_2008612_size_smallest",
+      "image_id": 13659,
+      "file_name": "000000013659.jpg",
+      "attribute_type": "size",
+      "category_en": "person",
+      "prompt_zh": "最小的人",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "13659_201643_spatial_topmost",
+      "image_id": 13659,
+      "file_name": "000000013659.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最上方的人",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "13659_199407_spatial_bottommost",
+      "image_id": 13659,
+      "file_name": "000000013659.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最下方的人",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "14439_1170759_size_smallest",
+      "image_id": 14439,
+      "file_name": "000000014439.jpg",
+      "attribute_type": "size",
+      "category_en": "backpack",
+      "prompt_zh": "最小的背包",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "14439_1827291_spatial_leftmost",
+      "image_id": 14439,
+      "file_name": "000000014439.jpg",
+      "attribute_type": "spatial",
+      "category_en": "backpack",
+      "prompt_zh": "最左侧的背包",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "14439_1827291_spatial_topmost",
+      "image_id": 14439,
+      "file_name": "000000014439.jpg",
+      "attribute_type": "spatial",
+      "category_en": "backpack",
+      "prompt_zh": "最上方的背包",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "14439_1826731_spatial_bottommost",
+      "image_id": 14439,
+      "file_name": "000000014439.jpg",
+      "attribute_type": "spatial",
+      "category_en": "backpack",
+      "prompt_zh": "最下方的背包",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "14439_1755416_size_smallest",
+      "image_id": 14439,
+      "file_name": "000000014439.jpg",
+      "attribute_type": "size",
+      "category_en": "person",
+      "prompt_zh": "最小的人",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "14439_1733380_spatial_bottommost",
+      "image_id": 14439,
+      "file_name": "000000014439.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最下方的人",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "25394_2206285_spatial_topmost",
+      "image_id": 25394,
+      "file_name": "000000025394.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最上方的人",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "25394_1495015_size_smallest",
+      "image_id": 25394,
+      "file_name": "000000025394.jpg",
+      "attribute_type": "size",
+      "category_en": "bottle",
+      "prompt_zh": "最小的瓶子",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "25394_1494849_spatial_leftmost",
+      "image_id": 25394,
+      "file_name": "000000025394.jpg",
+      "attribute_type": "spatial",
+      "category_en": "bottle",
+      "prompt_zh": "最左侧的瓶子",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "25394_2095304_spatial_rightmost",
+      "image_id": 25394,
+      "file_name": "000000025394.jpg",
+      "attribute_type": "spatial",
+      "category_en": "bottle",
+      "prompt_zh": "最右侧的瓶子",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    },
+    {
+      "task_id": "29984_529789_size_smallest",
+      "image_id": 29984,
+      "file_name": "000000029984.jpg",
+      "attribute_type": "size",
+      "category_en": "person",
+      "prompt_zh": "最小的人",
+      "best_iou": 0.0,
+      "best_pred_score": 0.0,
+      "miss_reason": "no_box"
+    }
+  ]
+}

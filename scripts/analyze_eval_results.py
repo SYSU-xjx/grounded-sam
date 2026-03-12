@@ -24,7 +24,7 @@ def parse_args():
         "--topk_fail",
         type=int,
         default=20,
-        help="Top-K worst tasks by IoU for failure table",
+        help="Top-K tasks to export for each failure reason table",
     )
     return parser.parse_args()
 
@@ -177,24 +177,35 @@ def main():
             "max_image_acc": 0.0,
         }
 
-    # 5) Top-K failed tasks (lowest IoU)
-    fail_tasks = [t for t in tasks if not t["hit"]]
-    fail_tasks_sorted = sorted(fail_tasks, key=lambda x: (x["best_iou"], x.get("best_pred_score") or -1))
-    rows_fail_topk = []
-    for t in fail_tasks_sorted[: args.topk_fail]:
-        rows_fail_topk.append(
-            {
-                "task_id": t["task_id"],
-                "image_id": t["image_id"],
-                "file_name": t["file_name"],
-                "attribute_type": t["attribute_type"],
-                "category_en": t["category_en"],
-                "prompt_zh": t["prompt_zh"],
-                "best_iou": round(float(t["best_iou"]), 4),
-                "best_pred_score": round(float(t["best_pred_score"] or 0.0), 4),
-                "miss_reason": t.get("miss_reason", ""),
-            }
-        )
+    # 5) Top-K failed tasks by miss reason (highest IoU first)
+    def build_fail_rows(filtered_tasks):
+        rows = []
+        for t in filtered_tasks[: args.topk_fail]:
+            rows.append(
+                {
+                    "task_id": t["task_id"],
+                    "image_id": t["image_id"],
+                    "file_name": t["file_name"],
+                    "attribute_type": t["attribute_type"],
+                    "category_en": t["category_en"],
+                    "prompt_zh": t["prompt_zh"],
+                    "best_iou": round(float(t["best_iou"]), 4),
+                    "best_pred_score": round(float(t["best_pred_score"] or 0.0), 4),
+                    "miss_reason": t.get("miss_reason", ""),
+                }
+            )
+        return rows
+
+    low_iou_tasks = sorted(
+        [t for t in tasks if (not t["hit"]) and t.get("miss_reason") == "low_iou"],
+        key=lambda x: (-float(x["best_iou"]), -(float(x.get("best_pred_score") or 0.0))),
+    )
+    wrong_instance_tasks = sorted(
+        [t for t in tasks if (not t["hit"]) and t.get("miss_reason") == "wrong_instance"],
+        key=lambda x: (-float(x["best_iou"]), -(float(x.get("best_pred_score") or 0.0))),
+    )
+    rows_low_iou_topk = build_fail_rows(low_iou_tasks)
+    rows_wrong_instance_topk = build_fail_rows(wrong_instance_tasks)
 
     # 6) Markdown report
     markdown_lines = []
@@ -233,7 +244,8 @@ def main():
     add_md_table("By Attribute", rows_by_attr)
     add_md_table("By Category", rows_by_cat)
     add_md_table("Miss Reason Distribution", rows_miss)
-    add_md_table(f"Top-{args.topk_fail} Failed Tasks (lowest IoU)", rows_fail_topk)
+    add_md_table(f"Top-{args.topk_fail} Low-IoU Tasks", rows_low_iou_topk)
+    add_md_table(f"Top-{args.topk_fail} Wrong-Instance Tasks", rows_wrong_instance_topk)
 
     report_md = "\n".join(markdown_lines)
     with open(os.path.join(output_dir, "analysis_report.md"), "w", encoding="utf-8") as f:
@@ -248,7 +260,8 @@ def main():
             "by_attribute": rows_by_attr,
             "by_category": rows_by_cat,
             "miss_reasons": rows_miss,
-            "top_failed_tasks": rows_fail_topk,
+            "top_low_iou_tasks": rows_low_iou_topk,
+            "top_wrong_instance_tasks": rows_wrong_instance_topk,
         },
     )
     write_csv(
@@ -267,8 +280,23 @@ def main():
         ["miss_reason", "count", "ratio_in_miss", "ratio_in_all_tasks"],
     )
     write_csv(
-        os.path.join(output_dir, "top_failed_tasks.csv"),
-        rows_fail_topk,
+        os.path.join(output_dir, "top_low_iou_tasks.csv"),
+        rows_low_iou_topk,
+        [
+            "task_id",
+            "image_id",
+            "file_name",
+            "attribute_type",
+            "category_en",
+            "prompt_zh",
+            "best_iou",
+            "best_pred_score",
+            "miss_reason",
+        ],
+    )
+    write_csv(
+        os.path.join(output_dir, "top_wrong_instance_tasks.csv"),
+        rows_wrong_instance_topk,
         [
             "task_id",
             "image_id",

@@ -180,6 +180,8 @@ def ensure_run_dir(run_root):
             os.makedirs(run_dir, exist_ok=True)
             os.makedirs(os.path.join(run_dir, "vis_fail"), exist_ok=True)
             os.makedirs(os.path.join(run_dir, "vis_hit"), exist_ok=True)
+            os.makedirs(os.path.join(run_dir, "vis_wrong_instance"), exist_ok=True)
+            os.makedirs(os.path.join(run_dir, "vis_low_iou"), exist_ok=True)
             return run_dir
         idx += 1
 
@@ -224,6 +226,8 @@ def main():
     image_summaries = []
     vis_pool_hit = defaultdict(list)
     vis_pool_fail = defaultdict(list)
+    vis_pool_wrong_instance = []
+    vis_pool_low_iou = []
 
     with open(task_jsonl_path, "w", encoding="utf-8") as f_jsonl:
         total_tasks = sum(len(x.get("tasks", [])) for x in images)
@@ -352,6 +356,7 @@ def main():
                         "image_path": image_path,
                         "task_id": task["task_id"],
                         "attribute_type": task["attribute_type"],
+                        "miss_reason": miss_reason,
                         "prompt": prompt_zh,
                         "prompt_en": translated_prompt if translated_prompt else prompt_zh,
                         "target_bbox_xyxy": task["target_bbox_xyxy"],
@@ -363,6 +368,10 @@ def main():
                         vis_pool_hit[task["attribute_type"]].append(vis_item)
                     else:
                         vis_pool_fail[task["attribute_type"]].append(vis_item)
+                        if miss_reason == "wrong_instance":
+                            vis_pool_wrong_instance.append(vis_item)
+                        elif miss_reason == "low_iou":
+                            vis_pool_low_iou.append(vis_item)
 
                     pbar.set_postfix(
                         image_id=image_id,
@@ -404,7 +413,7 @@ def main():
     json.dump(overall, open(overall_summary_path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 
     for attr_type, items in vis_pool_fail.items():
-        items_sorted = sorted(items, key=lambda x: x["best_iou"])[: args.max_vis_per_attr]
+        items_sorted = sorted(items, key=lambda x: x["best_iou"], reverse=True)[: args.max_vis_per_attr]
         for i, item in enumerate(items_sorted):
             out_path = os.path.join(run_dir, "vis_fail", f"{attr_type}_{i:02d}_{item['task_id']}.jpg")
             draw_vis(
@@ -419,6 +428,48 @@ def main():
                 ],
                 out_path,
             )
+
+    wrong_instance_sorted = sorted(
+        vis_pool_wrong_instance, key=lambda x: x["best_iou"], reverse=True
+    )[: args.max_vis_per_attr]
+    for i, item in enumerate(wrong_instance_sorted):
+        out_path = os.path.join(
+            run_dir, "vis_wrong_instance", f"{i:02d}_{item['attribute_type']}_{item['task_id']}.jpg"
+        )
+        draw_vis(
+            item["image_path"],
+            item["target_bbox_xyxy"],
+            item["best_pred_bbox"],
+            [
+                "miss=wrong_instance",
+                f"attr={item['attribute_type']}",
+                f"prompt={item['prompt_en']}",
+                f"iou={item['best_iou']:.3f}",
+                f"score={item['best_pred_score']:.3f}",
+            ],
+            out_path,
+        )
+
+    low_iou_sorted = sorted(
+        vis_pool_low_iou, key=lambda x: x["best_iou"], reverse=True
+    )[: args.max_vis_per_attr]
+    for i, item in enumerate(low_iou_sorted):
+        out_path = os.path.join(
+            run_dir, "vis_low_iou", f"{i:02d}_{item['attribute_type']}_{item['task_id']}.jpg"
+        )
+        draw_vis(
+            item["image_path"],
+            item["target_bbox_xyxy"],
+            item["best_pred_bbox"],
+            [
+                "miss=low_iou",
+                f"attr={item['attribute_type']}",
+                f"prompt={item['prompt_en']}",
+                f"iou={item['best_iou']:.3f}",
+                f"score={item['best_pred_score']:.3f}",
+            ],
+            out_path,
+        )
 
     for attr_type, items in vis_pool_hit.items():
         items_sorted = sorted(items, key=lambda x: x["best_iou"], reverse=True)[: args.max_vis_per_attr]

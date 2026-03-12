@@ -18,6 +18,7 @@ import GroundingDINO.groundingdino.datasets.transforms as T
 from GroundingDINO.groundingdino.models import build_model
 from GroundingDINO.groundingdino.util.slconfig import SLConfig
 from GroundingDINO.groundingdino.util.utils import clean_state_dict
+from segment_anything import SamPredictor, sam_hq_model_registry, sam_model_registry
 
 
 def parse_args():
@@ -40,6 +41,10 @@ def parse_args():
     )
     parser.add_argument("--max_vis_per_attr", type=int, default=20, help="top-K hit/fail visualizations per attr")
     parser.add_argument("--run_root", type=str, default="runs", help="output root folder")
+    parser.add_argument("--sam_version", type=str, default="vit_h", help="SAM ViT version: vit_b / vit_l / vit_h")
+    parser.add_argument("--sam_checkpoint", type=str, default="", help="path to SAM checkpoint for mask visualization")
+    parser.add_argument("--sam_hq_checkpoint", type=str, default="", help="path to SAM-HQ checkpoint for mask visualization")
+    parser.add_argument("--use_sam_hq", action="store_true", help="use SAM-HQ for mask visualization")
     return parser.parse_args()
 
 
@@ -94,6 +99,18 @@ def preprocess_image(image_path):
     return image_pil, image_tensor
 
 
+def load_sam_predictor(args):
+    if args.use_sam_hq:
+        if not args.sam_hq_checkpoint:
+            raise ValueError("--sam_hq_checkpoint is required when --use_sam_hq is set")
+        sam = sam_hq_model_registry[args.sam_version](checkpoint=args.sam_hq_checkpoint).to(args.device)
+    else:
+        if not args.sam_checkpoint:
+            return None
+        sam = sam_model_registry[args.sam_version](checkpoint=args.sam_checkpoint).to(args.device)
+    return SamPredictor(sam)
+
+
 def run_grounding(model, image_tensor, caption, box_threshold, device):
     caption = caption.strip().lower()
     if not caption.endswith("."):
@@ -136,7 +153,7 @@ def iou_xyxy(a, b):
     return inter / union
 
 
-def draw_vis(image_path, gt_box, pred_box, title_lines, out_path):
+def draw_vis(image_path, gt_box, pred_box, title_lines, out_path, pred_mask=None):
     def _get_chinese_font(size=16):
         font_candidates = [
             "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
@@ -155,6 +172,12 @@ def draw_vis(image_path, gt_box, pred_box, title_lines, out_path):
         return ImageFont.load_default()
 
     image = Image.open(image_path).convert("RGB")
+    if pred_mask is not None:
+        overlay = Image.new("RGBA", image.size, (0, 0, 0, 0))
+        overlay_arr = np.array(overlay, dtype=np.uint8)
+        mask_bool = pred_mask.astype(bool)
+        overlay_arr[mask_bool] = np.array([30, 144, 255, 110], dtype=np.uint8)
+        image = Image.alpha_composite(image.convert("RGBA"), Image.fromarray(overlay_arr, mode="RGBA")).convert("RGB")
     draw = ImageDraw.Draw(image)
     font = _get_chinese_font(size=16)
     # GT: green, Pred: red
@@ -168,6 +191,28 @@ def draw_vis(image_path, gt_box, pred_box, title_lines, out_path):
     draw.rectangle((5, 5, box_right, box_bottom), fill=(0, 0, 0))
     draw.text((8, 8), text, fill=(255, 255, 255), font=font)
     image.save(out_path)
+
+
+def predict_mask_for_box(predictor, image_path, pred_box, device):
+    if predictor is None or pred_box is None:
+        return None
+
+    image_bgr = cv2.imread(image_path)
+    if image_bgr is None:
+        return None
+    image_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
+    predictor.set_image(image_rgb)
+    box_tensor = torch.tensor([pred_box], dtype=torch.float32)
+    transformed_boxes = predictor.transform.apply_boxes_torch(box_tensor, image_rgb.shape[:2]).to(device)
+    masks, _, _ = predictor.predict_torch(
+        point_coords=None,
+        point_labels=None,
+        boxes=transformed_boxes,
+        multimask_output=False,
+    )
+    if masks is None or masks.numel() == 0:
+        return None
+    return masks[0, 0].detach().cpu().numpy()
 
 
 def ensure_run_dir(run_root):
@@ -202,6 +247,7 @@ def main():
         translator = PromptTranslator(args.translation_model, args.device)
 
     model = load_model(args.config, args.grounded_checkpoint, args.bert_base_uncased_path, args.device)
+    sam_predictor = load_sam_predictor(args)
 
     run_meta = {
         "created_at": dt.datetime.now().isoformat(),
@@ -427,6 +473,7 @@ def main():
                     f"score={item['best_pred_score']:.3f}",
                 ],
                 out_path,
+                pred_mask=predict_mask_for_box(sam_predictor, item["image_path"], item["best_pred_bbox"], args.device),
             )
 
     wrong_instance_sorted = sorted(
@@ -448,6 +495,7 @@ def main():
                 f"score={item['best_pred_score']:.3f}",
             ],
             out_path,
+            pred_mask=predict_mask_for_box(sam_predictor, item["image_path"], item["best_pred_bbox"], args.device),
         )
 
     low_iou_sorted = sorted(
@@ -469,6 +517,7 @@ def main():
                 f"score={item['best_pred_score']:.3f}",
             ],
             out_path,
+            pred_mask=predict_mask_for_box(sam_predictor, item["image_path"], item["best_pred_bbox"], args.device),
         )
 
     for attr_type, items in vis_pool_hit.items():
@@ -486,6 +535,7 @@ def main():
                     f"score={item['best_pred_score']:.3f}",
                 ],
                 out_path,
+                pred_mask=predict_mask_for_box(sam_predictor, item["image_path"], item["best_pred_bbox"], args.device),
             )
 
     print(f"Run dir: {run_dir}")

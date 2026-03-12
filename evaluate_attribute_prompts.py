@@ -29,7 +29,7 @@ def parse_args():
     parser.add_argument("--device", type=str, default="cuda", help="cuda/cpu")
     parser.add_argument("--box_threshold", type=float, default=0.3, help="box threshold")
     parser.add_argument("--text_threshold", type=float, default=0.25, help="text threshold")
-    parser.add_argument("--iou_threshold", type=float, default=0.5, help="IoU threshold for hit")
+    parser.add_argument("--iou_threshold", type=float, default=0.3, help="IoU threshold for hit")
     parser.add_argument("--bert_base_uncased_path", type=str, default="", help="optional local bert path")
     parser.add_argument("--enable_translate", action="store_true", help="translate zh prompt to en before inference")
     parser.add_argument(

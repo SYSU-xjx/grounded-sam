@@ -1,0 +1,20 @@
+{
+  "created_at": "2026-03-12T15:31:49.369094",
+  "args": {
+    "eval_json": "data/coco_subset_10x20_min2/attribute_eval_v1.json",
+    "images_dir": "data/coco_subset_10x20_min2/images",
+    "config": "GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py",
+    "grounded_checkpoint": "groundingdino_swint_ogc.pth",
+    "device": "cuda",
+    "box_threshold": 0.3,
+    "text_threshold": 0.25,
+    "iou_threshold": 0.3,
+    "bert_base_uncased_path": "",
+    "enable_translate": true,
+    "translation_model": "opus-mt-zh-en",
+    "max_vis_per_attr": 20,
+    "run_root": "runs"
+  },
+  "num_images": 179,
+  "eval_json": "data/coco_subset_10x20_min2/attribute_eval_v1.json"
+}

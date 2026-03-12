@@ -18,7 +18,14 @@ import GroundingDINO.groundingdino.datasets.transforms as T
 from GroundingDINO.groundingdino.models import build_model
 from GroundingDINO.groundingdino.util.slconfig import SLConfig
 from GroundingDINO.groundingdino.util.utils import clean_state_dict
-from segment_anything import SamPredictor, sam_hq_model_registry, sam_model_registry
+
+import sys
+sys.path.append(os.path.join(os.getcwd(), "segment_anything"))
+from segment_anything import (
+    sam_model_registry,
+    sam_hq_model_registry,
+    SamPredictor
+)
 
 
 def parse_args():

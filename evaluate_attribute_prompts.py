@@ -18,6 +18,16 @@ import GroundingDINO.groundingdino.datasets.transforms as T
 from GroundingDINO.groundingdino.models import build_model
 from GroundingDINO.groundingdino.util.slconfig import SLConfig
 from GroundingDINO.groundingdino.util.utils import clean_state_dict
+from attribute_experiments import (
+    build_candidates_from_grounding,
+    compute_attribute_scores,
+    deduplicate_candidates,
+    infer_prompt_texts,
+    merge_candidate_sets,
+    parse_attribute_prompt,
+    rerank_candidates,
+    truncate_candidates,
+)
 
 import sys
 sys.path.append(os.path.join(os.getcwd(), "segment_anything"))
@@ -52,6 +62,21 @@ def parse_args():
     parser.add_argument("--sam_checkpoint", type=str, default="", help="path to SAM checkpoint for mask visualization")
     parser.add_argument("--sam_hq_checkpoint", type=str, default="", help="path to SAM-HQ checkpoint for mask visualization")
     parser.add_argument("--use_sam_hq", action="store_true", help="use SAM-HQ for mask visualization")
+    parser.add_argument(
+        "--experiment_mode",
+        type=str,
+        default="exp1",
+        choices=["exp1", "exp2", "exp3", "exp4"],
+        help="evaluation target: baseline exp1 or optimized exp2/exp3/exp4",
+    )
+    parser.add_argument("--alpha", type=float, default=0.5, help="weight for detection score in exp2/3/4")
+    parser.add_argument("--beta", type=float, default=0.5, help="weight for attribute score in exp2/3/4")
+    parser.add_argument("--topk_candidates", type=int, default=10, help="top-k candidates kept before reranking")
+    parser.add_argument("--merge_iou_thresh", type=float, default=0.7, help="IoU threshold for candidate deduplication")
+    parser.add_argument("--disable_merge", action="store_true", help="for exp4: skip candidate fusion")
+    parser.add_argument("--disable_rerank", action="store_true", help="for exp4: skip attribute reranking")
+    parser.add_argument("--subject_prompt_override", type=str, default="", help="for exp4: override subject prompt")
+    parser.add_argument("--attr_prompt_override", type=str, default="", help="for exp4: override attribute prompt")
     return parser.parse_args()
 
 
@@ -242,6 +267,145 @@ def safe_div(a, b):
     return float(a) / float(b) if b else 0.0
 
 
+def select_candidates_for_mode(
+    args,
+    model,
+    image_tensor,
+    image_size,
+    prompt_zh,
+    translator,
+):
+    if args.experiment_mode == "exp1":
+        infer_prompt = prompt_zh
+        translated_prompt = ""
+        if translator is not None and translator.contains_chinese(prompt_zh):
+            translated_prompt = translator.translate(prompt_zh)
+            infer_prompt = normalize_prompt(prompt_zh, translated_prompt)
+        boxes_cxcywh, scores, final_prompt = run_grounding(
+            model, image_tensor, infer_prompt, args.box_threshold, args.device
+        )
+        boxes_xyxy = cxcywh_to_xyxy_abs(boxes_cxcywh, image_size[0], image_size[1])
+        candidates = []
+        for box_xyxy, score in zip(boxes_xyxy.tolist(), scores.tolist() if len(scores) > 0 else []):
+            candidates.append(
+                {
+                    "box_xyxy": box_xyxy,
+                    "det_score": float(score),
+                    "attr_score": 0.0,
+                    "final_score": float(score),
+                    "source": "baseline",
+                }
+            )
+        return {
+            "candidates": candidates,
+            "selected_candidates": candidates,
+            "prompt_infer": final_prompt,
+            "translated_prompt_raw": translated_prompt,
+        }
+
+    prompt_info = parse_attribute_prompt(prompt_zh)
+    prompt_texts = infer_prompt_texts(prompt_info, translator, args.enable_translate)
+    if args.experiment_mode == "exp4":
+        if args.subject_prompt_override:
+            prompt_texts["subject_prompt_en"] = args.subject_prompt_override.strip().lower()
+        if args.attr_prompt_override:
+            prompt_texts["attr_prompt_en"] = args.attr_prompt_override.strip().lower()
+
+    if args.experiment_mode == "exp2":
+        candidates, used_prompt = build_candidates_from_grounding(
+            model,
+            image_tensor,
+            image_size,
+            prompt_texts["subject_prompt_en"],
+            args.box_threshold,
+            args.text_threshold,
+            args.device,
+            source="subject",
+        )
+        candidates = truncate_candidates(
+            deduplicate_candidates(candidates, args.merge_iou_thresh), args.topk_candidates
+        )
+        candidates = compute_attribute_scores(candidates, prompt_info["attribute_value"])
+        ranked = rerank_candidates(candidates, args.alpha, args.beta, apply_attribute_rerank=True)
+        selected_candidates = ranked[:1]
+        return {
+            "candidates": ranked,
+            "selected_candidates": selected_candidates,
+            "prompt_infer": used_prompt,
+            "translated_prompt_raw": prompt_texts["translated_prompt_raw"],
+        }
+
+    if args.experiment_mode == "exp3":
+        candidates, used_prompt = build_candidates_from_grounding(
+            model,
+            image_tensor,
+            image_size,
+            prompt_texts["attr_prompt_en"],
+            args.box_threshold,
+            args.text_threshold,
+            args.device,
+            source="attr",
+        )
+        candidates = truncate_candidates(
+            deduplicate_candidates(candidates, args.merge_iou_thresh), args.topk_candidates
+        )
+        candidates = compute_attribute_scores(candidates, prompt_info["attribute_value"])
+        ranked = rerank_candidates(candidates, args.alpha, args.beta, apply_attribute_rerank=True)
+        selected_candidates = ranked[:1]
+        return {
+            "candidates": ranked,
+            "selected_candidates": selected_candidates,
+            "prompt_infer": used_prompt,
+            "translated_prompt_raw": prompt_texts["translated_prompt_raw"],
+        }
+
+    if args.experiment_mode == "exp4":
+        subject_candidates, used_subject_prompt = build_candidates_from_grounding(
+            model,
+            image_tensor,
+            image_size,
+            prompt_texts["subject_prompt_en"],
+            args.box_threshold,
+            args.text_threshold,
+            args.device,
+            source="subject",
+        )
+        attr_candidates, used_attr_prompt = build_candidates_from_grounding(
+            model,
+            image_tensor,
+            image_size,
+            prompt_texts["attr_prompt_en"],
+            args.box_threshold,
+            args.text_threshold,
+            args.device,
+            source="attr",
+        )
+        subject_candidates = truncate_candidates(
+            deduplicate_candidates(subject_candidates, args.merge_iou_thresh), args.topk_candidates
+        )
+        attr_candidates = truncate_candidates(
+            deduplicate_candidates(attr_candidates, args.merge_iou_thresh), args.topk_candidates
+        )
+        if args.disable_merge:
+            candidates = subject_candidates + attr_candidates
+        else:
+            candidates = merge_candidate_sets(subject_candidates, attr_candidates, args.merge_iou_thresh)
+        candidates = truncate_candidates(candidates, args.topk_candidates)
+        candidates = compute_attribute_scores(candidates, prompt_info["attribute_value"])
+        ranked = rerank_candidates(
+            candidates, args.alpha, args.beta, apply_attribute_rerank=not args.disable_rerank
+        )
+        selected_candidates = ranked[:1]
+        return {
+            "candidates": ranked,
+            "selected_candidates": selected_candidates,
+            "prompt_infer": f"subject={used_subject_prompt} | attr={used_attr_prompt}",
+            "translated_prompt_raw": prompt_texts["translated_prompt_raw"],
+        }
+
+    raise ValueError(f"Unsupported experiment_mode: {args.experiment_mode}")
+
+
 def main():
     args = parse_args()
     run_dir = ensure_run_dir(args.run_root)
@@ -327,30 +491,31 @@ def main():
 
             for prompt_zh, prompt_tasks in tasks_by_prompt.items():
                 t0 = time.time()
-                infer_prompt = prompt_zh
-                translated_prompt = ""
-                if translator is not None and translator.contains_chinese(prompt_zh):
-                    translated_prompt = translator.translate(prompt_zh)
-                    infer_prompt = normalize_prompt(prompt_zh, translated_prompt)
-                boxes_cxcywh, scores, final_prompt = run_grounding(
-                    model, image_tensor, infer_prompt, args.box_threshold, args.device
+                experiment_result = select_candidates_for_mode(
+                    args,
+                    model,
+                    image_tensor,
+                    (width, height),
+                    prompt_zh,
+                    translator,
                 )
-                boxes_xyxy = cxcywh_to_xyxy_abs(boxes_cxcywh, width, height)
+                candidate_boxes = [np.array(c["box_xyxy"], dtype=np.float32) for c in experiment_result["selected_candidates"]]
+                candidate_scores = [float(c.get("final_score", c.get("det_score", 0.0))) for c in experiment_result["selected_candidates"]]
 
                 for task in prompt_tasks:
                     task_count += 1
                     target = np.array(task["target_bbox_xyxy"], dtype=np.float32)
-                    if boxes_xyxy.shape[0] == 0:
+                    if len(candidate_boxes) == 0:
                         best_iou = 0.0
                         best_idx = -1
                     else:
-                        ious = np.array([iou_xyxy(target, b) for b in boxes_xyxy], dtype=np.float32)
+                        ious = np.array([iou_xyxy(target, b) for b in candidate_boxes], dtype=np.float32)
                         best_idx = int(np.argmax(ious))
                         best_iou = float(ious[best_idx])
 
                     hit = best_iou >= args.iou_threshold
-                    best_pred_bbox = boxes_xyxy[best_idx].tolist() if best_idx >= 0 else None
-                    best_pred_score = float(scores[best_idx]) if best_idx >= 0 else None
+                    best_pred_bbox = candidate_boxes[best_idx].tolist() if best_idx >= 0 else None
+                    best_pred_score = float(candidate_scores[best_idx]) if best_idx >= 0 else None
 
                     if hit:
                         miss_reason = ""
@@ -362,7 +527,7 @@ def main():
                         else:
                             # wrong_instance: pred overlaps another same-category GT, but not target
                             wrong_instance = False
-                            best_box = boxes_xyxy[best_idx]
+                            best_box = candidate_boxes[best_idx]
                             alt_ious = []
                             for ann_id, gt_box in gt_by_cat[task["category_en"]]:
                                 if ann_id == task["target_ann_id"]:
@@ -383,8 +548,8 @@ def main():
                         "attribute_type": task["attribute_type"],
                         "attribute_value": task["attribute_value"],
                         "prompt_zh": prompt_zh,
-                        "prompt_infer": final_prompt,
-                        "translated_prompt_raw": translated_prompt,
+                        "prompt_infer": experiment_result["prompt_infer"],
+                        "translated_prompt_raw": experiment_result["translated_prompt_raw"],
                         "target_ann_id": task["target_ann_id"],
                         "target_bbox_xyxy": task["target_bbox_xyxy"],
                         "best_iou": best_iou,
@@ -411,7 +576,7 @@ def main():
                         "attribute_type": task["attribute_type"],
                         "miss_reason": miss_reason,
                         "prompt": prompt_zh,
-                        "prompt_en": translated_prompt if translated_prompt else prompt_zh,
+                        "prompt_en": experiment_result["translated_prompt_raw"] if experiment_result["translated_prompt_raw"] else prompt_zh,
                         "target_bbox_xyxy": task["target_bbox_xyxy"],
                         "best_pred_bbox": best_pred_bbox,
                         "best_iou": best_iou,

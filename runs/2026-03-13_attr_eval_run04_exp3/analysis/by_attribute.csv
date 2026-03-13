@@ -1,0 +1,3 @@
+attribute_type,num_tasks,num_hit,acc,mean_iou
+size,618,232,0.3754,0.3288
+spatial,1236,385,0.3115,0.2693

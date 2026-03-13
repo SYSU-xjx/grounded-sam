@@ -53,7 +53,7 @@ def parse_args():
     parser.add_argument(
         "--translation_model",
         type=str,
-        default="Helsinki-NLP/opus-mt-zh-en",
+        default="opus-mt-zh-en",
         help="HF model name for zh->en translation",
     )
     parser.add_argument("--max_vis_per_attr", type=int, default=20, help="top-K hit/fail visualizations per attr")

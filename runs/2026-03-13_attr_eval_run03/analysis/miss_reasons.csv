@@ -1,0 +1,4 @@
+miss_reason,count,ratio_in_miss,ratio_in_all_tasks
+low_iou,550,0.6293,0.2967
+wrong_instance,315,0.3604,0.1699
+no_box,9,0.0103,0.0049

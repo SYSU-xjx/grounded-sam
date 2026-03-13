@@ -1,0 +1,633 @@
+{
+  "overall_ref": {
+    "num_images": 176,
+    "num_tasks": 1854,
+    "num_hit": 980,
+    "acc": 0.5285868392664509,
+    "by_attribute": {
+      "size": {
+        "num_tasks": 618,
+        "num_hit": 304,
+        "acc": 0.4919093851132686
+      },
+      "spatial": {
+        "num_tasks": 1236,
+        "num_hit": 676,
+        "acc": 0.5469255663430421
+      }
+    },
+    "by_category": {
+      "person": {
+        "num_tasks": 582,
+        "num_hit": 283,
+        "acc": 0.48625429553264604
+      },
+      "laptop": {
+        "num_tasks": 120,
+        "num_hit": 84,
+        "acc": 0.7
+      },
+      "cup": {
+        "num_tasks": 174,
+        "num_hit": 85,
+        "acc": 0.4885057471264368
+      },
+      "car": {
+        "num_tasks": 174,
+        "num_hit": 68,
+        "acc": 0.39080459770114945
+      },
+      "backpack": {
+        "num_tasks": 132,
+        "num_hit": 58,
+        "acc": 0.4393939393939394
+      },
+      "chair": {
+        "num_tasks": 240,
+        "num_hit": 120,
+        "acc": 0.5
+      },
+      "bottle": {
+        "num_tasks": 180,
+        "num_hit": 108,
+        "acc": 0.6
+      },
+      "bicycle": {
+        "num_tasks": 132,
+        "num_hit": 73,
+        "acc": 0.553030303030303
+      },
+      "dog": {
+        "num_tasks": 114,
+        "num_hit": 95,
+        "acc": 0.8333333333333334
+      },
+      "microwave": {
+        "num_tasks": 6,
+        "num_hit": 6,
+        "acc": 1.0
+      }
+    }
+  },
+  "image_stats": {
+    "num_images": 179,
+    "mean_image_acc": 0.5388,
+    "p25_image_acc": 0.3333,
+    "p50_image_acc": 0.5,
+    "p75_image_acc": 0.7083,
+    "min_image_acc": 0.0,
+    "max_image_acc": 1.0
+  },
+  "by_attribute": [
+    {
+      "attribute_type": "size",
+      "num_tasks": 618,
+      "num_hit": 304,
+      "acc": 0.4919,
+      "mean_iou": 0.4238
+    },
+    {
+      "attribute_type": "spatial",
+      "num_tasks": 1236,
+      "num_hit": 676,
+      "acc": 0.5469,
+      "mean_iou": 0.4749
+    }
+  ],
+  "by_category": [
+    {
+      "category_en": "person",
+      "num_tasks": 582,
+      "num_hit": 283,
+      "acc": 0.4863,
+      "mean_iou": 0.4312
+    },
+    {
+      "category_en": "chair",
+      "num_tasks": 240,
+      "num_hit": 120,
+      "acc": 0.5,
+      "mean_iou": 0.4312
+    },
+    {
+      "category_en": "bottle",
+      "num_tasks": 180,
+      "num_hit": 108,
+      "acc": 0.6,
+      "mean_iou": 0.5297
+    },
+    {
+      "category_en": "car",
+      "num_tasks": 174,
+      "num_hit": 68,
+      "acc": 0.3908,
+      "mean_iou": 0.3364
+    },
+    {
+      "category_en": "cup",
+      "num_tasks": 174,
+      "num_hit": 85,
+      "acc": 0.4885,
+      "mean_iou": 0.437
+    },
+    {
+      "category_en": "backpack",
+      "num_tasks": 132,
+      "num_hit": 58,
+      "acc": 0.4394,
+      "mean_iou": 0.3326
+    },
+    {
+      "category_en": "bicycle",
+      "num_tasks": 132,
+      "num_hit": 73,
+      "acc": 0.553,
+      "mean_iou": 0.4277
+    },
+    {
+      "category_en": "laptop",
+      "num_tasks": 120,
+      "num_hit": 84,
+      "acc": 0.7,
+      "mean_iou": 0.6263
+    },
+    {
+      "category_en": "dog",
+      "num_tasks": 114,
+      "num_hit": 95,
+      "acc": 0.8333,
+      "mean_iou": 0.7321
+    },
+    {
+      "category_en": "microwave",
+      "num_tasks": 6,
+      "num_hit": 6,
+      "acc": 1.0,
+      "mean_iou": 0.9103
+    }
+  ],
+  "miss_reasons": [
+    {
+      "miss_reason": "low_iou",
+      "count": 550,
+      "ratio_in_miss": 0.6293,
+      "ratio_in_all_tasks": 0.2967
+    },
+    {
+      "miss_reason": "wrong_instance",
+      "count": 315,
+      "ratio_in_miss": 0.3604,
+      "ratio_in_all_tasks": 0.1699
+    },
+    {
+      "miss_reason": "no_box",
+      "count": 9,
+      "ratio_in_miss": 0.0103,
+      "ratio_in_all_tasks": 0.0049
+    }
+  ],
+  "top_low_iou_tasks": [
+    {
+      "task_id": "465822_1727101_spatial_leftmost",
+      "image_id": 465822,
+      "file_name": "000000465822.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最左侧的人",
+      "best_iou": 0.2994,
+      "best_pred_score": 0.5839,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "38829_128391_spatial_bottommost",
+      "image_id": 38829,
+      "file_name": "000000038829.jpg",
+      "attribute_type": "spatial",
+      "category_en": "bicycle",
+      "prompt_zh": "最下方的自行车",
+      "best_iou": 0.2937,
+      "best_pred_score": 0.8602,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "483999_546252_size_largest",
+      "image_id": 483999,
+      "file_name": "000000483999.jpg",
+      "attribute_type": "size",
+      "category_en": "person",
+      "prompt_zh": "最大的人",
+      "best_iou": 0.2934,
+      "best_pred_score": 0.6292,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "38829_128391_spatial_rightmost",
+      "image_id": 38829,
+      "file_name": "000000038829.jpg",
+      "attribute_type": "spatial",
+      "category_en": "bicycle",
+      "prompt_zh": "最右侧的自行车",
+      "best_iou": 0.2892,
+      "best_pred_score": 0.869,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "448076_198115_spatial_bottommost",
+      "image_id": 448076,
+      "file_name": "000000448076.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最下方的人",
+      "best_iou": 0.288,
+      "best_pred_score": 0.6132,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "347335_673302_spatial_bottommost",
+      "image_id": 347335,
+      "file_name": "000000347335.jpg",
+      "attribute_type": "spatial",
+      "category_en": "cup",
+      "prompt_zh": "最下方的杯子",
+      "best_iou": 0.2868,
+      "best_pred_score": 0.6816,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "38829_128391_size_smallest",
+      "image_id": 38829,
+      "file_name": "000000038829.jpg",
+      "attribute_type": "size",
+      "category_en": "bicycle",
+      "prompt_zh": "最小的自行车",
+      "best_iou": 0.2867,
+      "best_pred_score": 0.8818,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "410880_2223427_size_largest",
+      "image_id": 410880,
+      "file_name": "000000410880.jpg",
+      "attribute_type": "size",
+      "category_en": "chair",
+      "prompt_zh": "最大的椅子",
+      "best_iou": 0.2863,
+      "best_pred_score": 0.5875,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "508370_1204446_spatial_topmost",
+      "image_id": 508370,
+      "file_name": "000000508370.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最上方的人",
+      "best_iou": 0.2846,
+      "best_pred_score": 0.6902,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "198641_2134578_size_smallest",
+      "image_id": 198641,
+      "file_name": "000000198641.jpg",
+      "attribute_type": "size",
+      "category_en": "laptop",
+      "prompt_zh": "最小的笔记本电脑",
+      "best_iou": 0.2832,
+      "best_pred_score": 0.9144,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "198641_2134578_spatial_rightmost",
+      "image_id": 198641,
+      "file_name": "000000198641.jpg",
+      "attribute_type": "spatial",
+      "category_en": "laptop",
+      "prompt_zh": "最右侧的笔记本电脑",
+      "best_iou": 0.2831,
+      "best_pred_score": 0.9391,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "94944_1825525_spatial_rightmost",
+      "image_id": 94944,
+      "file_name": "000000094944.jpg",
+      "attribute_type": "spatial",
+      "category_en": "backpack",
+      "prompt_zh": "最右侧的背包",
+      "best_iou": 0.2822,
+      "best_pred_score": 0.6161,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "94944_1825525_size_largest",
+      "image_id": 94944,
+      "file_name": "000000094944.jpg",
+      "attribute_type": "size",
+      "category_en": "backpack",
+      "prompt_zh": "最大的背包",
+      "best_iou": 0.2822,
+      "best_pred_score": 0.6447,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "94944_1825525_spatial_bottommost",
+      "image_id": 94944,
+      "file_name": "000000094944.jpg",
+      "attribute_type": "spatial",
+      "category_en": "backpack",
+      "prompt_zh": "最下方的背包",
+      "best_iou": 0.2815,
+      "best_pred_score": 0.614,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "198641_2134578_spatial_bottommost",
+      "image_id": 198641,
+      "file_name": "000000198641.jpg",
+      "attribute_type": "spatial",
+      "category_en": "laptop",
+      "prompt_zh": "最下方的笔记本电脑",
+      "best_iou": 0.2789,
+      "best_pred_score": 0.8908,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "463522_1235913_spatial_rightmost",
+      "image_id": 463522,
+      "file_name": "000000463522.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最右侧的人",
+      "best_iou": 0.2731,
+      "best_pred_score": 0.5802,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "433103_1296539_spatial_bottommost",
+      "image_id": 433103,
+      "file_name": "000000433103.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最下方的人",
+      "best_iou": 0.2703,
+      "best_pred_score": 0.7087,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "346232_469928_size_largest",
+      "image_id": 346232,
+      "file_name": "000000346232.jpg",
+      "attribute_type": "size",
+      "category_en": "person",
+      "prompt_zh": "最大的人",
+      "best_iou": 0.2691,
+      "best_pred_score": 0.6241,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "107226_216223_spatial_leftmost",
+      "image_id": 107226,
+      "file_name": "000000107226.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最左侧的人",
+      "best_iou": 0.2587,
+      "best_pred_score": 0.6215,
+      "miss_reason": "low_iou"
+    },
+    {
+      "task_id": "245173_1335240_spatial_topmost",
+      "image_id": 245173,
+      "file_name": "000000245173.jpg",
+      "attribute_type": "spatial",
+      "category_en": "bicycle",
+      "prompt_zh": "最上方的自行车",
+      "best_iou": 0.258,
+      "best_pred_score": 0.6479,
+      "miss_reason": "low_iou"
+    }
+  ],
+  "top_wrong_instance_tasks": [
+    {
+      "task_id": "97337_2032606_size_smallest",
+      "image_id": 97337,
+      "file_name": "000000097337.jpg",
+      "attribute_type": "size",
+      "category_en": "person",
+      "prompt_zh": "最小的人",
+      "best_iou": 0.1938,
+      "best_pred_score": 0.7063,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "97337_2032606_spatial_bottommost",
+      "image_id": 97337,
+      "file_name": "000000097337.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最下方的人",
+      "best_iou": 0.1938,
+      "best_pred_score": 0.7063,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "84650_1823740_size_smallest",
+      "image_id": 84650,
+      "file_name": "000000084650.jpg",
+      "attribute_type": "size",
+      "category_en": "backpack",
+      "prompt_zh": "最小的背包",
+      "best_iou": 0.1876,
+      "best_pred_score": 0.6887,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "508370_501765_spatial_bottommost",
+      "image_id": 508370,
+      "file_name": "000000508370.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最下方的人",
+      "best_iou": 0.1856,
+      "best_pred_score": 0.6013,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "380913_524668_spatial_leftmost",
+      "image_id": 380913,
+      "file_name": "000000380913.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最左侧的人",
+      "best_iou": 0.1839,
+      "best_pred_score": 0.6938,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "11197_2157164_spatial_bottommost",
+      "image_id": 11197,
+      "file_name": "000000011197.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最下方的人",
+      "best_iou": 0.1829,
+      "best_pred_score": 0.7045,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "269113_18383_spatial_rightmost",
+      "image_id": 269113,
+      "file_name": "000000269113.jpg",
+      "attribute_type": "spatial",
+      "category_en": "dog",
+      "prompt_zh": "最右侧的狗",
+      "best_iou": 0.1817,
+      "best_pred_score": 0.8484,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "493286_2027667_size_smallest",
+      "image_id": 493286,
+      "file_name": "000000493286.jpg",
+      "attribute_type": "size",
+      "category_en": "person",
+      "prompt_zh": "最小的人",
+      "best_iou": 0.1598,
+      "best_pred_score": 0.5898,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "493286_2027667_spatial_topmost",
+      "image_id": 493286,
+      "file_name": "000000493286.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最上方的人",
+      "best_iou": 0.1598,
+      "best_pred_score": 0.5898,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "112298_89815_size_smallest",
+      "image_id": 112298,
+      "file_name": "000000112298.jpg",
+      "attribute_type": "size",
+      "category_en": "bottle",
+      "prompt_zh": "最小的瓶子",
+      "best_iou": 0.1511,
+      "best_pred_score": 0.6632,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "286553_445938_size_smallest",
+      "image_id": 286553,
+      "file_name": "000000286553.jpg",
+      "attribute_type": "size",
+      "category_en": "person",
+      "prompt_zh": "最小的人",
+      "best_iou": 0.1469,
+      "best_pred_score": 0.6589,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "100723_1764004_spatial_leftmost",
+      "image_id": 100723,
+      "file_name": "000000100723.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最左侧的人",
+      "best_iou": 0.1397,
+      "best_pred_score": 0.6211,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "74058_344286_spatial_topmost",
+      "image_id": 74058,
+      "file_name": "000000074058.jpg",
+      "attribute_type": "spatial",
+      "category_en": "bicycle",
+      "prompt_zh": "最上方的自行车",
+      "best_iou": 0.1344,
+      "best_pred_score": 0.6296,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "397354_1710302_size_smallest",
+      "image_id": 397354,
+      "file_name": "000000397354.jpg",
+      "attribute_type": "size",
+      "category_en": "person",
+      "prompt_zh": "最小的人",
+      "best_iou": 0.134,
+      "best_pred_score": 0.6106,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "397354_1710302_spatial_rightmost",
+      "image_id": 397354,
+      "file_name": "000000397354.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最右侧的人",
+      "best_iou": 0.134,
+      "best_pred_score": 0.6106,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "89880_6127_size_smallest",
+      "image_id": 89880,
+      "file_name": "000000089880.jpg",
+      "attribute_type": "size",
+      "category_en": "dog",
+      "prompt_zh": "最小的狗",
+      "best_iou": 0.1265,
+      "best_pred_score": 0.7703,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "325838_2195234_size_smallest",
+      "image_id": 325838,
+      "file_name": "000000325838.jpg",
+      "attribute_type": "size",
+      "category_en": "laptop",
+      "prompt_zh": "最小的笔记本电脑",
+      "best_iou": 0.1159,
+      "best_pred_score": 0.6264,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "242060_1501568_spatial_topmost",
+      "image_id": 242060,
+      "file_name": "000000242060.jpg",
+      "attribute_type": "spatial",
+      "category_en": "cup",
+      "prompt_zh": "最上方的杯子",
+      "best_iou": 0.1153,
+      "best_pred_score": 0.7737,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "520659_1592232_spatial_topmost",
+      "image_id": 520659,
+      "file_name": "000000520659.jpg",
+      "attribute_type": "spatial",
+      "category_en": "chair",
+      "prompt_zh": "最上方的椅子",
+      "best_iou": 0.1139,
+      "best_pred_score": 0.5817,
+      "miss_reason": "wrong_instance"
+    },
+    {
+      "task_id": "84241_471845_spatial_bottommost",
+      "image_id": 84241,
+      "file_name": "000000084241.jpg",
+      "attribute_type": "spatial",
+      "category_en": "person",
+      "prompt_zh": "最下方的人",
+      "best_iou": 0.1133,
+      "best_pred_score": 0.5864,
+      "miss_reason": "wrong_instance"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "created_at": "2026-03-13T14:26:13.816645",
+  "args": {
+    "eval_json": "data/coco_subset_10x20_min2/attribute_eval_v1.json",
+    "images_dir": "data/coco_subset_10x20_min2/images",
+    "config": "GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py",
+    "grounded_checkpoint": "groundingdino_swint_ogc.pth",
+    "device": "cuda",
+    "box_threshold": 0.3,
+    "text_threshold": 0.25,
+    "iou_threshold": 0.3,
+    "bert_base_uncased_path": "",
+    "enable_translate": true,
+    "translation_model": "opus-mt-zh-en",
+    "max_vis_per_attr": 20,
+    "run_root": "runs",
+    "sam_version": "vit_h",
+    "sam_checkpoint": "sam_vit_h_4b8939.pth",
+    "sam_hq_checkpoint": "",
+    "use_sam_hq": false,
+    "experiment_mode": "exp2",
+    "alpha": 0.6,
+    "beta": 0.4,
+    "topk_candidates": 10,
+    "merge_iou_thresh": 0.7,
+    "disable_merge": false,
+    "disable_rerank": false,
+    "subject_prompt_override": "",
+    "attr_prompt_override": ""
+  },
+  "num_images": 179,
+  "eval_json": "data/coco_subset_10x20_min2/attribute_eval_v1.json"
+}

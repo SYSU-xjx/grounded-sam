@@ -244,7 +244,31 @@ def _normalize_values(values, reverse=False):
     return ((values - min_v) / (max_v - min_v)).tolist()
 
 
-def compute_attribute_scores(candidates, attribute_value):
+def annotate_size_candidates_with_mask_area(candidates, predictor, image_rgb, device):
+    if len(candidates) == 0:
+        return candidates
+    if predictor is None:
+        raise ValueError("SAM predictor is required for size-attribute reranking")
+
+    predictor.set_image(image_rgb)
+    for item in candidates:
+        box_tensor = torch.tensor([item["box_xyxy"]], dtype=torch.float32)
+        transformed_boxes = predictor.transform.apply_boxes_torch(box_tensor, image_rgb.shape[:2]).to(device)
+        masks, _, _ = predictor.predict_torch(
+            point_coords=None,
+            point_labels=None,
+            boxes=transformed_boxes,
+            multimask_output=False,
+        )
+        if masks is None or masks.numel() == 0:
+            item["mask_area"] = 0.0
+        else:
+            mask = masks[0, 0].detach().cpu().numpy()
+            item["mask_area"] = float(mask.astype(np.float32).sum())
+    return candidates
+
+
+def compute_attribute_scores(candidates, attribute_value, predictor=None, image_rgb=None, device="cpu"):
     if len(candidates) == 0:
         return candidates
 
@@ -255,11 +279,10 @@ def compute_attribute_scores(candidates, attribute_value):
         values = [0.5 * (item["box_xyxy"][1] + item["box_xyxy"][3]) for item in candidates]
         reverse = attribute_value == "topmost"
     elif attribute_value in {"largest", "smallest"}:
-        values = [
-            max(0.0, item["box_xyxy"][2] - item["box_xyxy"][0]) *
-            max(0.0, item["box_xyxy"][3] - item["box_xyxy"][1])
-            for item in candidates
-        ]
+        if predictor is None or image_rgb is None:
+            raise ValueError("predictor and image_rgb are required for size attribute scoring")
+        candidates = annotate_size_candidates_with_mask_area(candidates, predictor, image_rgb, device)
+        values = [item.get("mask_area", 0.0) for item in candidates]
         reverse = attribute_value == "smallest"
     else:
         raise ValueError(f"Unsupported attribute value: {attribute_value}")
@@ -533,7 +556,13 @@ def run_experiment_exp2(context, args):
     )
     candidates = deduplicate_candidates(candidates, args.merge_iou_thresh)
     candidates = truncate_candidates(candidates, args.topk_candidates)
-    candidates = compute_attribute_scores(candidates, prompt_info["attribute_value"])
+    candidates = compute_attribute_scores(
+        candidates,
+        prompt_info["attribute_value"],
+        predictor=context["sam_predictor"],
+        image_rgb=context["image_rgb"],
+        device=args.device,
+    )
     ranked = rerank_candidates(candidates, args.alpha, args.beta, apply_attribute_rerank=not args.attribute_only_rerank)
     selected = ranked[0] if ranked else None
 
@@ -573,7 +602,13 @@ def run_experiment_exp3(context, args):
     )
     candidates = deduplicate_candidates(candidates, args.merge_iou_thresh)
     candidates = truncate_candidates(candidates, args.topk_candidates)
-    candidates = compute_attribute_scores(candidates, prompt_info["attribute_value"])
+    candidates = compute_attribute_scores(
+        candidates,
+        prompt_info["attribute_value"],
+        predictor=context["sam_predictor"],
+        image_rgb=context["image_rgb"],
+        device=args.device,
+    )
     ranked = rerank_candidates(candidates, args.alpha, args.beta, apply_attribute_rerank=True)
     selected = ranked[0] if ranked else None
 
@@ -632,7 +667,13 @@ def run_experiment_exp4(context, args):
     else:
         merged = merge_candidate_sets(subject_candidates, attr_candidates, args.merge_iou_thresh)
     merged = truncate_candidates(merged, args.topk_candidates)
-    merged = compute_attribute_scores(merged, prompt_info["attribute_value"])
+    merged = compute_attribute_scores(
+        merged,
+        prompt_info["attribute_value"],
+        predictor=context["sam_predictor"],
+        image_rgb=context["image_rgb"],
+        device=args.device,
+    )
     ranked = rerank_candidates(merged, args.alpha, args.beta, apply_attribute_rerank=not args.disable_rerank)
     selected = ranked[0] if ranked else None
 

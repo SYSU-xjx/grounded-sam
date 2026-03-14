@@ -272,6 +272,8 @@ def select_candidates_for_mode(
     model,
     image_tensor,
     image_size,
+    image_rgb,
+    sam_predictor,
     prompt_zh,
     translator,
 ):
@@ -325,7 +327,13 @@ def select_candidates_for_mode(
         candidates = truncate_candidates(
             deduplicate_candidates(candidates, args.merge_iou_thresh), args.topk_candidates
         )
-        candidates = compute_attribute_scores(candidates, prompt_info["attribute_value"])
+        candidates = compute_attribute_scores(
+            candidates,
+            prompt_info["attribute_value"],
+            predictor=sam_predictor,
+            image_rgb=image_rgb,
+            device=args.device,
+        )
         ranked = rerank_candidates(candidates, args.alpha, args.beta, apply_attribute_rerank=True)
         selected_candidates = ranked[:1]
         return {
@@ -349,7 +357,13 @@ def select_candidates_for_mode(
         candidates = truncate_candidates(
             deduplicate_candidates(candidates, args.merge_iou_thresh), args.topk_candidates
         )
-        candidates = compute_attribute_scores(candidates, prompt_info["attribute_value"])
+        candidates = compute_attribute_scores(
+            candidates,
+            prompt_info["attribute_value"],
+            predictor=sam_predictor,
+            image_rgb=image_rgb,
+            device=args.device,
+        )
         ranked = rerank_candidates(candidates, args.alpha, args.beta, apply_attribute_rerank=True)
         selected_candidates = ranked[:1]
         return {
@@ -391,7 +405,13 @@ def select_candidates_for_mode(
         else:
             candidates = merge_candidate_sets(subject_candidates, attr_candidates, args.merge_iou_thresh)
         candidates = truncate_candidates(candidates, args.topk_candidates)
-        candidates = compute_attribute_scores(candidates, prompt_info["attribute_value"])
+        candidates = compute_attribute_scores(
+            candidates,
+            prompt_info["attribute_value"],
+            predictor=sam_predictor,
+            image_rgb=image_rgb,
+            device=args.device,
+        )
         ranked = rerank_candidates(
             candidates, args.alpha, args.beta, apply_attribute_rerank=not args.disable_rerank
         )
@@ -496,6 +516,8 @@ def main():
                     model,
                     image_tensor,
                     (width, height),
+                    np.array(image_pil),
+                    sam_predictor,
                     prompt_zh,
                     translator,
                 )

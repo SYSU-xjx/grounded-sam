@@ -73,6 +73,13 @@ def parse_args():
     parser.add_argument("--beta", type=float, default=0.5, help="weight for attribute score in exp2/3/4")
     parser.add_argument("--topk_candidates", type=int, default=10, help="top-k candidates kept before reranking")
     parser.add_argument("--merge_iou_thresh", type=float, default=0.7, help="IoU threshold for candidate deduplication")
+    parser.add_argument(
+        "--size_scoring_mode",
+        type=str,
+        default="mask",
+        choices=["bbox", "mask"],
+        help="size attribute scoring source for exp2/exp3/exp4",
+    )
     parser.add_argument("--disable_merge", action="store_true", help="for exp4: skip candidate fusion")
     parser.add_argument("--disable_rerank", action="store_true", help="for exp4: skip attribute reranking")
     parser.add_argument("--subject_prompt_override", type=str, default="", help="for exp4: override subject prompt")
@@ -333,6 +340,7 @@ def select_candidates_for_mode(
             predictor=sam_predictor,
             image_rgb=image_rgb,
             device=args.device,
+            size_scoring_mode=args.size_scoring_mode,
         )
         ranked = rerank_candidates(candidates, args.alpha, args.beta, apply_attribute_rerank=True)
         selected_candidates = ranked[:1]
@@ -363,6 +371,7 @@ def select_candidates_for_mode(
             predictor=sam_predictor,
             image_rgb=image_rgb,
             device=args.device,
+            size_scoring_mode=args.size_scoring_mode,
         )
         ranked = rerank_candidates(candidates, args.alpha, args.beta, apply_attribute_rerank=True)
         selected_candidates = ranked[:1]
@@ -411,6 +420,7 @@ def select_candidates_for_mode(
             predictor=sam_predictor,
             image_rgb=image_rgb,
             device=args.device,
+            size_scoring_mode=args.size_scoring_mode,
         )
         ranked = rerank_candidates(
             candidates, args.alpha, args.beta, apply_attribute_rerank=not args.disable_rerank
@@ -715,7 +725,7 @@ def main():
         )
 
     for attr_type, items in vis_pool_hit.items():
-        items_sorted = sorted(items, key=lambda x: x["best_iou"], reverse=True)[: args.max_vis_per_attr]
+        items_sorted = sorted(items, key=lambda x: x["best_iou"])[: args.max_vis_per_attr]
         for i, item in enumerate(items_sorted):
             out_path = os.path.join(run_dir, "vis_hit", f"{attr_type}_{i:02d}_{item['task_id']}.jpg")
             draw_vis(

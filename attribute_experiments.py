@@ -268,7 +268,14 @@ def annotate_size_candidates_with_mask_area(candidates, predictor, image_rgb, de
     return candidates
 
 
-def compute_attribute_scores(candidates, attribute_value, predictor=None, image_rgb=None, device="cpu"):
+def compute_attribute_scores(
+    candidates,
+    attribute_value,
+    predictor=None,
+    image_rgb=None,
+    device="cpu",
+    size_scoring_mode="mask",
+):
     if len(candidates) == 0:
         return candidates
 
@@ -279,10 +286,19 @@ def compute_attribute_scores(candidates, attribute_value, predictor=None, image_
         values = [0.5 * (item["box_xyxy"][1] + item["box_xyxy"][3]) for item in candidates]
         reverse = attribute_value == "topmost"
     elif attribute_value in {"largest", "smallest"}:
-        if predictor is None or image_rgb is None:
-            raise ValueError("predictor and image_rgb are required for size attribute scoring")
-        candidates = annotate_size_candidates_with_mask_area(candidates, predictor, image_rgb, device)
-        values = [item.get("mask_area", 0.0) for item in candidates]
+        if size_scoring_mode == "bbox":
+            values = [
+                max(0.0, item["box_xyxy"][2] - item["box_xyxy"][0]) *
+                max(0.0, item["box_xyxy"][3] - item["box_xyxy"][1])
+                for item in candidates
+            ]
+        elif size_scoring_mode == "mask":
+            if predictor is None or image_rgb is None:
+                raise ValueError("predictor and image_rgb are required for mask-based size attribute scoring")
+            candidates = annotate_size_candidates_with_mask_area(candidates, predictor, image_rgb, device)
+            values = [item.get("mask_area", 0.0) for item in candidates]
+        else:
+            raise ValueError(f"Unsupported size_scoring_mode: {size_scoring_mode}")
         reverse = attribute_value == "smallest"
     else:
         raise ValueError(f"Unsupported attribute value: {attribute_value}")
@@ -457,6 +473,13 @@ def add_common_args(parser):
     parser.add_argument("--beta", type=float, default=0.5, help="weight for attribute score")
     parser.add_argument("--topk_candidates", type=int, default=10, help="max candidates kept before reranking")
     parser.add_argument("--merge_iou_thresh", type=float, default=0.7, help="IoU threshold for candidate deduplication")
+    parser.add_argument(
+        "--size_scoring_mode",
+        type=str,
+        default="mask",
+        choices=["bbox", "mask"],
+        help="size attribute scoring source: bbox area or SAM mask area",
+    )
     parser.add_argument("--save_all_candidates", action="store_true", help="save visualization with all candidates")
     return parser
 
@@ -562,6 +585,7 @@ def run_experiment_exp2(context, args):
         predictor=context["sam_predictor"],
         image_rgb=context["image_rgb"],
         device=args.device,
+        size_scoring_mode=args.size_scoring_mode,
     )
     ranked = rerank_candidates(candidates, args.alpha, args.beta, apply_attribute_rerank=not args.attribute_only_rerank)
     selected = ranked[0] if ranked else None
@@ -577,6 +601,7 @@ def run_experiment_exp2(context, args):
         ranked,
         {
             "attribute_only_rerank": bool(args.attribute_only_rerank),
+            "size_scoring_mode": args.size_scoring_mode,
         },
         start_time,
         extra={
@@ -608,6 +633,7 @@ def run_experiment_exp3(context, args):
         predictor=context["sam_predictor"],
         image_rgb=context["image_rgb"],
         device=args.device,
+        size_scoring_mode=args.size_scoring_mode,
     )
     ranked = rerank_candidates(candidates, args.alpha, args.beta, apply_attribute_rerank=True)
     selected = ranked[0] if ranked else None
@@ -621,7 +647,9 @@ def run_experiment_exp3(context, args):
         context["sam_predictor"],
         selected,
         ranked,
-        {},
+        {
+            "size_scoring_mode": args.size_scoring_mode,
+        },
         start_time,
         extra={
             "attr_prompt_used": attr_prompt_used,
@@ -673,6 +701,7 @@ def run_experiment_exp4(context, args):
         predictor=context["sam_predictor"],
         image_rgb=context["image_rgb"],
         device=args.device,
+        size_scoring_mode=args.size_scoring_mode,
     )
     ranked = rerank_candidates(merged, args.alpha, args.beta, apply_attribute_rerank=not args.disable_rerank)
     selected = ranked[0] if ranked else None
@@ -691,6 +720,7 @@ def run_experiment_exp4(context, args):
             "disable_rerank": bool(args.disable_rerank),
             "subject_prompt_override": args.subject_prompt_override or "",
             "attr_prompt_override": args.attr_prompt_override or "",
+            "size_scoring_mode": args.size_scoring_mode,
         },
         start_time,
         extra={

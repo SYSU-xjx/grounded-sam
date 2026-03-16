@@ -1,0 +1,70 @@
+{
+  "num_images": 176,
+  "num_tasks": 1854,
+  "num_hit": 1006,
+  "acc": 0.5426105717367853,
+  "by_attribute": {
+    "size": {
+      "num_tasks": 618,
+      "num_hit": 312,
+      "acc": 0.5048543689320388
+    },
+    "spatial": {
+      "num_tasks": 1236,
+      "num_hit": 694,
+      "acc": 0.5614886731391586
+    }
+  },
+  "by_category": {
+    "person": {
+      "num_tasks": 582,
+      "num_hit": 299,
+      "acc": 0.5137457044673539
+    },
+    "laptop": {
+      "num_tasks": 120,
+      "num_hit": 84,
+      "acc": 0.7
+    },
+    "cup": {
+      "num_tasks": 174,
+      "num_hit": 96,
+      "acc": 0.5517241379310345
+    },
+    "car": {
+      "num_tasks": 174,
+      "num_hit": 67,
+      "acc": 0.3850574712643678
+    },
+    "backpack": {
+      "num_tasks": 132,
+      "num_hit": 57,
+      "acc": 0.4318181818181818
+    },
+    "chair": {
+      "num_tasks": 240,
+      "num_hit": 117,
+      "acc": 0.4875
+    },
+    "bottle": {
+      "num_tasks": 180,
+      "num_hit": 105,
+      "acc": 0.5833333333333334
+    },
+    "bicycle": {
+      "num_tasks": 132,
+      "num_hit": 79,
+      "acc": 0.5984848484848485
+    },
+    "dog": {
+      "num_tasks": 114,
+      "num_hit": 96,
+      "acc": 0.8421052631578947
+    },
+    "microwave": {
+      "num_tasks": 6,
+      "num_hit": 6,
+      "acc": 1.0
+    }
+  }
+}

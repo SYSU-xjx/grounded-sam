@@ -1,0 +1,21 @@
+task_id,image_id,file_name,attribute_type,category_en,prompt_zh,best_iou,best_pred_score,miss_reason
+183716_455359_size_largest,183716,000000183716.jpg,size,person,largest person,0.1975,0.6392,wrong_instance
+84650_1823740_spatial_leftmost,84650,000000084650.jpg,spatial,backpack,leftmost backpack,0.1848,0.3282,wrong_instance
+84650_1823740_spatial_topmost,84650,000000084650.jpg,spatial,backpack,topmost backpack,0.1845,0.3345,wrong_instance
+84650_1823740_size_smallest,84650,000000084650.jpg,size,backpack,smallest backpack,0.1842,0.3063,wrong_instance
+269113_18383_size_smallest,269113,000000269113.jpg,size,dog,smallest dog,0.1781,0.3481,wrong_instance
+269113_18383_spatial_rightmost,269113,000000269113.jpg,spatial,dog,rightmost dog,0.1775,0.3936,wrong_instance
+74058_344274_spatial_leftmost,74058,000000074058.jpg,spatial,bicycle,leftmost bicycle,0.1694,0.4659,wrong_instance
+397354_254502_spatial_bottommost,397354,000000397354.jpg,spatial,person,bottommost person,0.1692,0.4118,wrong_instance
+74058_344274_spatial_bottommost,74058,000000074058.jpg,spatial,bicycle,bottommost bicycle,0.1684,0.4853,wrong_instance
+74058_344274_size_smallest,74058,000000074058.jpg,size,bicycle,smallest bicycle,0.1648,0.6829,wrong_instance
+13923_1490683_spatial_bottommost,13923,000000013923.jpg,spatial,bottle,bottommost bottle,0.1645,0.3237,wrong_instance
+13923_1490683_spatial_leftmost,13923,000000013923.jpg,spatial,bottle,leftmost bottle,0.1637,0.3259,wrong_instance
+11197_2157164_spatial_bottommost,11197,000000011197.jpg,spatial,person,bottommost person,0.162,0.583,wrong_instance
+493286_2027667_spatial_topmost,493286,000000493286.jpg,spatial,person,topmost person,0.1568,0.3369,wrong_instance
+84241_490280_size_smallest,84241,000000084241.jpg,size,person,smallest person,0.1564,0.4303,wrong_instance
+397354_260673_size_largest,397354,000000397354.jpg,size,person,largest person,0.1508,0.3024,wrong_instance
+286553_445938_spatial_topmost,286553,000000286553.jpg,spatial,person,topmost person,0.1469,0.4668,wrong_instance
+286553_445938_spatial_leftmost,286553,000000286553.jpg,spatial,person,leftmost person,0.1467,0.4811,wrong_instance
+286553_445938_size_smallest,286553,000000286553.jpg,size,person,smallest person,0.1465,0.6606,wrong_instance
+84241_490280_spatial_topmost,84241,000000084241.jpg,spatial,person,topmost person,0.1405,0.3851,wrong_instance
